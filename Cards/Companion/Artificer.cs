@@ -3,14 +3,13 @@ using RainfrostMod.Traits;
 
 namespace RainfrostMod.Cards.Companion
 {
-    internal class Monk() : AbstractUnit(
-        Name, "Monk",
-        3, 1, 4,
+    internal class Artificer() : AbstractUnit(
+        Name, "Artificer",
+        6, 4, 4,
         subscribe: card =>
         {
             card.startWithEffects = [
-                Rainfrost.SStack(OnCardPlayedIncreaseAttackOfAlliesInRow.Name, 1),
-                Rainfrost.SStack(OnCardPlayedReduceAttackOfEnemiesInRow.Name, 1),
+                Rainfrost.SStack(OnCardPlayedApplySpiceToCardsInHand.Name, 3),
             ];
 
             card.traits = [
@@ -18,6 +17,6 @@ namespace RainfrostMod.Cards.Companion
             ];
         })
     {
-        public const string Name = "Monk";
+        public const string Name = "Artificer";
     }
 }

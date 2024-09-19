@@ -9,16 +9,12 @@ namespace RainfrostMod.Cards.Items
         subscribe: data =>
         {
             data.attackEffects = [
-                Rainfrost.SStack("Scrap", 1)
+                Rainfrost.SStack("Instant Add Scrap", 1)
             ];
 
             data.traits = [
                 Rainfrost.TStack("Consume"),
                 Rainfrost.TStack("Zoomlin"),
-            ];
-
-            data.targetConstraints = [
-                TargetConstraintHelper.HasStatus("Scrap")
             ];
         }
     )

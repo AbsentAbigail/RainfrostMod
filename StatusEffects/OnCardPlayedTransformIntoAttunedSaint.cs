@@ -5,19 +5,19 @@ using RainfrostMod.StatusEffects.Implementations;
 
 namespace RainfrostMod.StatusEffects
 {
-    internal class TransformIntoMotherLongLegsOnCardPlayed() : AbstractStatus<StatusEffectTransformOnCardPlayed>(
-        Name,
-        "Become {0}",
-        subscribe: data =>
+    internal class OnCardPlayedTransformIntoAttunedSaint() : AbstractStatus<StatusEffectTransformOnCardPlayed>(
+        Name, "After triggering 10 times ({a} left), become {0}",
+        true,
+        subscribe: status =>
         {
             var fg = Rainfrost.GetStatus<StatusEffectNextPhase>("FinalBossPhase2");
 
-            data.animation = fg.animation;
-            data.nextPhase = Rainfrost.TryGet<CardData>(cardName);
+            status.animation = fg.animation;
+            status.nextPhase = Rainfrost.TryGet<CardData>(cardName);
         })
     {
-        public const string Name = "On Card Played Transform Into Mother Long Legs";
-        public static string cardName = MotherLongLegs.Name;
+        public const string Name = "On Card Played Transforrm Into Attuned Saint";
+        public static string cardName = AttunedSaint.Name;
 
         public override StatusEffectDataBuilder Builder()
         {

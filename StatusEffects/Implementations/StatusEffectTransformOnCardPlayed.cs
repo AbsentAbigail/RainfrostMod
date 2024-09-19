@@ -22,6 +22,13 @@ namespace RainfrostMod.StatusEffects.Implementations
             if (!(preventDeath || target.hp.current > 0))
                 return false;
 
+            count--;
+            target.display.promptUpdateDescription = true;
+            target.PromptUpdate();
+
+            if (count > 0)
+                return false;
+
             Transform();
             return true;
         }

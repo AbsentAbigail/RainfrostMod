@@ -15,7 +15,7 @@ namespace RainfrostMod.Helpers
         // copyTextFrom copies the text formating from an existing icon
         public static GameObject CreateIcon(string name, Sprite sprite, string type, string copyTextFrom, Color textColor, KeywordData[] keys)
         {
-            GameObject gameObject = new(name);
+            GameObject gameObject = new GameObject(name);
             UnityEngine.Object.DontDestroyOnLoad(gameObject);
             gameObject.SetActive(false);
             StatusIcon icon = gameObject.AddComponent<StatusIconExt>();

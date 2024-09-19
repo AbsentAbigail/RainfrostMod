@@ -101,12 +101,40 @@ namespace RainfrostMod
                 new InstantDoubleZap().Builder(),
                 new OnCardPlayedDoubleAllZap().Builder(),
 
-                new OngoingIncreaseHealth().Builder(),
-                new OngoingIncreaseHealthAndAttack().Builder(),
-                new WhileActiveBuffSurvivor().Builder(),
-                new WhileActiveGiveSurvivorBuffToAllySlugcats().Builder(),
+                new OnCardPlayedIncreaseHealthAndAttackForEachAlliedSlugcat().Builder(),
 
-                new WhileActiveReduceAttackToEnemiesInRow().Builder(),
+                new OnCardPlayedIncreaseAttackOfAlliesInRow().Builder(),
+                new OnCardPlayedReduceAttackOfEnemiesInRow().Builder(),
+
+                new InstantTransformIntoHunterLongLegsPermanent().Builder(),
+                new WhenDestroyedTransformSelfIntoHunterLongLegs().Builder(),
+                new InstantEatCard().Builder(),
+                new OnKillEatTarget().Builder(),
+
+                new OnCardPlayedAddBoneNeedleToHand().Builder(),
+                new InstantSummonBoneNeedle().Builder(),
+                new SummonBoneNeedle().Builder(),
+                new OnCardPlayedIncreaseHealthToRandomAlly().Builder(),
+
+                new OnCardPlayedApplySpiceToCardsInHand().Builder(),
+
+                new OnCardPlayedSummonCopyOfLeftmostCardInHand().Builder(),
+
+                new OnOomlinCardPlayedCountDownSelf().Builder(),
+
+                new OnCardPlayedTransformIntoAttunedSaint().Builder(),
+
+                new SummonSingularityBomb().Builder(),
+                new WhenDestroyedDamageAlliesInRowAndEnemiesInRow().Builder(),
+                new WhenScrapLostDamageAlliesInRowAndEnemiesInRow().Builder(),
+
+                new WhileActiveAddMultiHitToAlliedSlugcats().Builder(),
+
+                new WhileActiveAddMultiHitToAllPearls().Builder(),
+
+                new OnPearlCardPlayedDraw().Builder(),
+
+                new OnCardPlayedCountDownIteratorAllies().Builder(),
 
                 /**
                  * Keywords
@@ -142,9 +170,36 @@ namespace RainfrostMod
 
                 new Monk().Builder(),
 
+                new Hunter().Builder(),
+                new HunterLongLegs().Builder(),
+
+                new Spearmaster().Builder(),
+
+                new Artificer().Builder(),
+
+                new Gourmand().Builder(),
+
+                new Rivulet().Builder(),
+
+                new Saint().Builder(),
+                new AttunedSaint().Builder(),
+
+                new Enot().Builder(),
+
+                new Slugpup().Builder(),
+
+                new ScavengerNomad().Builder(),
+
+                new ScavengerMerchant().Builder(),
+
+                new SevenRedSuns().Builder(),
+
                 /**
                  * Cards (Clunker)
                  */
+                new SingularityBomb().Builder(),
+
+                new ScavengerToll().Builder(),
 
                 /**
                  * Cards (Items)
@@ -170,6 +225,8 @@ namespace RainfrostMod
 
                 new NeuronFly().Builder(),
                 new SlagResetKey().Builder(),
+
+                new BoneNeedle().Builder(),
 
                 /**
                  * Card Upgrades
