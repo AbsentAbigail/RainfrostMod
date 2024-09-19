@@ -8,7 +8,8 @@ namespace RainfrostMod.Cards.Companion
             string name, string title,
             int? health = null, int? attack = null, int counter = 0,
             Pools pools = Pools.General,
-            Action<CardData> subscribe = null
+            Action<CardData> subscribe = null,
+            bool altSprite = false
         ) : AbstractCard(name, title)
     {
         protected readonly int? health = health;
@@ -20,7 +21,7 @@ namespace RainfrostMod.Cards.Companion
         public virtual CardDataBuilder Builder()
         {
             subscribe ??= delegate { };
-            return CardHelper.DefaultUnitBuilder(name, title, health, attack, counter, pools)
+            return CardHelper.DefaultUnitBuilder(name, title, health, attack, counter, pools, altSprite)
                 .SubscribeToAfterAllBuildEvent(subscribe.Invoke);
         }
     }

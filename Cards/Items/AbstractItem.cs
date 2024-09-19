@@ -10,13 +10,14 @@ namespace RainfrostMod.Cards.Items
             Pools pools = Pools.General,
             int shopPrice = 50,
             bool playOnHand = true,
-            Action<CardData> subscribe = null
+            Action<CardData> subscribe = null,
+            bool altSprite = false
         ) : AbstractCard(name, title)
     {
         public virtual CardDataBuilder Builder()
         {
             subscribe ??= delegate { };
-            return CardHelper.DefaultItemBuilder(name, title, attack, needsTarget, pools, shopPrice)
+            return CardHelper.DefaultItemBuilder(name, title, attack, needsTarget, pools, shopPrice, altSprite)
                 .SubscribeToAfterAllBuildEvent(subscribe.Invoke)
                 .CanPlayOnHand(playOnHand);
         }

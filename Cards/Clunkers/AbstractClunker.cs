@@ -8,12 +8,13 @@ namespace RainfrostMod.Cards.Clunkers
             string name, string title,
             int scrap = 1, int? attack = null, int counter = 0,
             Pools pools = Pools.General,
-            Action<CardData> subscribe = null) : AbstractCard(name, title)
+            Action<CardData> subscribe = null,
+            bool altSprite = false) : AbstractCard(name, title)
     {
         public virtual CardDataBuilder Builder()
         {
             subscribe ??= delegate { };
-            return CardHelper.DefaultClunkerBuilder(name, title, scrap, attack, counter, pools)
+            return CardHelper.DefaultClunkerBuilder(name, title, scrap, attack, counter, pools, altSprite)
                 .SubscribeToAfterAllBuildEvent(subscribe.Invoke);
         }
     }

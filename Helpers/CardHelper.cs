@@ -11,34 +11,43 @@ namespace RainfrostMod.Cards
             return $"<card={Rainfrost.Instance.GUID}.{name}>";
         }
 
-        public static CardDataBuilder DefaultUnitBuilder(string name, string title, int? hp = null, int? attack = null, int counter = 0, Pools pools = Pools.General)
+        public static CardDataBuilder DefaultUnitBuilder(
+            string name, string title, int? hp = null, int? attack = null, int counter = 0, Pools pools = Pools.General, bool altSprite = false
+            )
         {
+            string spriteName = altSprite && Rainfrost.Instance.altArt ? "Alt" + name : name;
             return new CardDataBuilder(Rainfrost.Instance)
                 .CreateUnit(name, title)
                 .SetStats(hp, attack, counter)
-                .SetSprites(name + ".png", name + "BG.png")
+                .SetSprites(spriteName + ".png", spriteName + "BG.png")
                 .WithPools(UnitPools(pools));
         }
 
-        public static CardDataBuilder DefaultClunkerBuilder(string name, string title, int scrap = 1, int? attack = null, int counter = 0, Pools pools = Pools.General)
+        public static CardDataBuilder DefaultClunkerBuilder(
+            string name, string title, int scrap = 1, int? attack = null, int counter = 0, Pools pools = Pools.General, bool altSprite = false
+            )
         {
+            string spriteName = altSprite && Rainfrost.Instance.altArt ? "Alt" + name : name;
             return new CardDataBuilder(Rainfrost.Instance)
                 .CreateUnit(name, title)
                 .WithCardType("Clunker")
                 .SetStats(null, attack, counter)
                 .SetStartWithEffect(Rainfrost.SStack("Scrap", scrap))
-                .SetSprites(name + ".png", name + "BG.png")
+                .SetSprites(spriteName + ".png", spriteName + "BG.png")
                 .WithPools(ItemPools(pools));
         }
 
-        public static CardDataBuilder DefaultItemBuilder(string name, string title, int? attack = null, bool needsTarget = false, Pools pools = Pools.General, int shopPrice = 50)
+        public static CardDataBuilder DefaultItemBuilder(
+            string name, string title, int? attack = null, bool needsTarget = false, Pools pools = Pools.General, int shopPrice = 50, bool altSprite = false
+            )
         {
+            string spriteName = altSprite && Rainfrost.Instance.altArt ? "Alt" + name : name;
             return new CardDataBuilder(Rainfrost.Instance)
                 .CreateItem(name, title)
                 .SetDamage(attack)
                 .NeedsTarget(needsTarget)
                 .WithValue(shopPrice)
-                .SetSprites(name + ".png", name + "BG.png")
+                .SetSprites(spriteName + ".png", spriteName + "BG.png")
                 .WithPools(ItemPools(pools));
         }
 

@@ -17,7 +17,8 @@ namespace RainfrostMod.Cards.Companion
                     Rainfrost.TStack(Iterator.Name),
                     Rainfrost.TStack("Spark")
                 ];
-            }
+            },
+            altSprite: true
         )
     {
     }

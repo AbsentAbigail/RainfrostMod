@@ -1,4 +1,5 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using Deadpan.Enums.Engine.Components.Modding;
+using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
 namespace RainfrostMod.Cards.Companion
@@ -9,13 +10,14 @@ namespace RainfrostMod.Cards.Companion
         subscribe: card =>
         {
             card.startWithEffects = [
-                Rainfrost.SStack(WhileActiveGiveSurvivorBuffToAllySlugcats.Name, 1)
+                Rainfrost.SStack(OnCardPlayedIncreaseHealthAndAttackForEachAlliedSlugcat.Name, 1)
             ];
 
             card.traits = [
                 Rainfrost.TStack(Slugcat.Name)
             ];
-        })
+        },
+        altSprite: true)
     {
         public const string Name = "Survivor";
     }

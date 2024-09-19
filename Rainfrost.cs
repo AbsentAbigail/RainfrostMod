@@ -1,5 +1,6 @@
 ﻿using Deadpan.Enums.Engine.Components.Modding;
 using HarmonyLib;
+using RainfrostMod.Cards.Clunkers;
 using RainfrostMod.Cards.Companion;
 using RainfrostMod.Cards.Items;
 using RainfrostMod.Helpers;
@@ -9,9 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using WildfrostHopeMod.SFX;
 using WildfrostHopeMod.Utils;
-using WildfrostHopeMod.VFX;
 
 namespace RainfrostMod
 {
@@ -35,10 +34,8 @@ namespace RainfrostMod
         private List<object> assets;
         private bool loaded = false;
 
-        //this is here to allow us to make video and sound effects
-        public static GIFLoader VFX;
-
-        public static SFXLoader SFX;
+        [ConfigItem(true, "Replace some wiki sprites with drawn art|Requires restart to work", "Enable alternate art")]
+        public bool altArt;
 
         //this is here to allow our icon to appear in the text box of cards
         public TMP_SpriteAsset assetSprites;
