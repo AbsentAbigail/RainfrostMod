@@ -30,7 +30,7 @@ namespace RainfrostMod.StatusEffects
                 .WithTextInsert("{a}")
                 .WithOffensive(true)
                 .WithDoesDamage(true)
-                .WithIcon_VFX("zap", "zapicon", Keywords.Zap.Name, VFXMod_StatusEffectHelpers.LayoutGroup.health);
+                .WithIcon_VFX("zap", "zap", Keywords.Zap.Name, VFXMod_StatusEffectHelpers.LayoutGroup.health);
         }
     }
 }
