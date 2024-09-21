@@ -387,6 +387,8 @@
     <Compile Include="Cards\Companion\AbstractCompanion.cs" />
     <Compile Include="Cards\Companion\Artificer.cs" />
     <Compile Include="Cards\Companion\AttunedSaint.cs" />
+    <Compile Include="Cards\Companion\Overseer.cs" />
+    <Compile Include="Cards\Companion\Centipede.cs" />
     <Compile Include="Cards\Companion\DaddyLongLegs.cs" />
     <Compile Include="Cards\Companion\Enot.cs" />
     <Compile Include="Cards\Companion\Gourmand.cs" />
@@ -409,6 +411,9 @@
     <Compile Include="Cards\Companion\Survivor.cs" />
     <Compile Include="Cards\Items\AbstractItem.cs" />
     <Compile Include="Cards\Items\BoneNeedle.cs" />
+    <Compile Include="Cards\Items\CherryBomb.cs" />
+    <Compile Include="Cards\Items\Jellyfish.cs" />
+    <Compile Include="Cards\Items\RedCentipedeScale.cs" />
     <Compile Include="Cards\Items\NeuronFly.cs" />
     <Compile Include="Cards\Items\PearlAquamarine.cs" />
     <Compile Include="Cards\Items\PearlBlack.cs" />
@@ -429,6 +434,9 @@
     <Compile Include="Cards\Items\PearlTeal.cs" />
     <Compile Include="Cards\Items\PearlWhite.cs" />
     <Compile Include="Cards\Items\SlagResetKey.cs" />
+    <Compile Include="Cards\Items\Rock.cs" />
+    <Compile Include="Cards\Items\ElectricSpear.cs" />
+    <Compile Include="Cards\Items\Spear.cs" />
     <Compile Include="Helpers\CardUpgradeHelper.cs" />
     <Compile Include="Helpers\KeywordHelper.cs" />
     <Compile Include="Helpers\Pools.cs" />
@@ -457,6 +465,7 @@
     <Compile Include="StatusEffects\Implementations\StatusEffectOngoingMultiple.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectTransformOnCardPlayed.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectAbsorbOnKill.cs" />
+    <Compile Include="StatusEffects\Implementations\StatusEffectWhileActiveXBoostableScriptable.cs" />
     <Compile Include="StatusEffects\InstantDoubleZap.cs" />
     <Compile Include="StatusEffects\InstantEatCard.cs" />
     <Compile Include="StatusEffects\InstantGainExplode.cs" />
@@ -465,9 +474,12 @@
     <Compile Include="StatusEffects\InstantSummonNeuronFlyToDiscardPile.cs" />
     <Compile Include="StatusEffects\InstantSummonRandomPearl.cs" />
     <Compile Include="StatusEffects\InstantTransformIntoHunterLongLegsPermanent.cs" />
+    <Compile Include="StatusEffects\OnCardPlayedAddExplodeToAllAllies.cs" />
     <Compile Include="StatusEffects\OnCardPlayedAddNeuronFlyToHand.cs" />
     <Compile Include="StatusEffects\OnCardPlayedAddRandomPearlToHand.cs" />
     <Compile Include="StatusEffects\OnCardPlayedApplySpiceToCardsInHand.cs" />
+    <Compile Include="StatusEffects\WhileActiveGainMultiHitForEachActiveIterators.cs" />
+    <Compile Include="StatusEffects\OnCardPlayedIncreaseAttackEffectToSelf.cs" />
     <Compile Include="StatusEffects\OnCardPlayedCountDownIteratorAllies.cs" />
     <Compile Include="StatusEffects\OnCardPlayedDamageToNonRotAlliesInRow.cs" />
     <Compile Include="StatusEffects\OnCardPlayedDoubleAllZap.cs" />

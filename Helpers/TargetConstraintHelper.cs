@@ -25,6 +25,16 @@ namespace RainfrostMod.Helpers
             return targetConstraint;
         }
 
+        public static TargetConstraintOr HasCounterOrReaction(Action<TargetConstraintOr> modification = null, bool not = false)
+        {
+            var targetConstraint = Or("Has Counter Or Reaction", not,
+                MaxCounterMoreThan(0),
+                General<TargetConstraintHasReaction>("Has Reaction")
+            );
+            modification?.Invoke(targetConstraint);
+            return targetConstraint;
+        }
+
         public static TargetConstraintMaxCounterMoreThan MaxCounterMoreThan(int moreThan, Action<TargetConstraintMaxCounterMoreThan> modification = null, bool not = false)
         {
             var targetConstraint = General(not ? "Does Not Have" : "Has" + $" Max Counter More Than {moreThan}", modification, not);

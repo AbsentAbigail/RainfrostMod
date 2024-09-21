@@ -16,7 +16,8 @@ namespace RainfrostMod.Cards.Companion
             card.traits = [
                 Rainfrost.TStack(Slugcat.Name)
             ];
-        })
+        },
+        altSprite: true)
     {
         public const string Name = "Monk";
     }

@@ -5,6 +5,7 @@ using RainfrostMod.Cards.Companion;
 using RainfrostMod.Cards.Items;
 using RainfrostMod.Helpers;
 using RainfrostMod.StatusEffects;
+using RainfrostMod.StatusEffects.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,14 +28,14 @@ namespace RainfrostMod
 
         public override string[] Depends => ["hope.wildfrost.vfx"];
 
-        public override string Title => "Rainfrost [WIP]";
+        public override string Title => "Rainfrost";
 
-        public override string Description => "Rainworld themed mod. Concepts by Moondial (Work in Progress)";
+        public override string Description => "Rainworld themed mod. Concepts by Moondial. Alternate art by Sudux";
 
         private List<object> assets;
         private bool loaded = false;
 
-        [ConfigItem(true, "Replace some wiki sprites with drawn art|Requires restart to work", "Enable alternate art")]
+        [ConfigItem(true, "Replace some wiki sprites with drawn art (Requires restart to work)", "Enable alternate art")]
         public bool altArt;
 
         //this is here to allow our icon to appear in the text box of cards
@@ -61,7 +62,7 @@ namespace RainfrostMod
         public void CreateModAssets()
         {
             //Needed to get sprites in text boxes
-            assetSprites = HopeUtils.CreateSpriteAsset("assetSprites", directoryWithPNGs: ImagePath("Sprites"), textures: [], sprites: []);
+            assetSprites = HopeUtils.CreateSpriteAsset("assetSprites", directoryWithPNGs: ImagePath("Sprites"), textures: [], sprites: [ImagePath("zap.png").ToSprite()]);
 
             foreach (var character in assetSprites.spriteCharacterTable)
             {
@@ -136,6 +137,11 @@ namespace RainfrostMod
 
                 new OnCardPlayedCountDownIteratorAllies().Builder(),
 
+                new OnCardPlayedAddExplodeToAllAllies().Builder(),
+                new OnCardPlayedIncreaseAttackEffectToSelf().Builder(),
+
+                new WhileActiveGainMultiHitForEachActiveIterators().Builder(),
+
                 /**
                  * Keywords
                  */
@@ -194,6 +200,9 @@ namespace RainfrostMod
 
                 new SevenRedSuns().Builder(),
 
+                new Centipede().Builder(),
+                new Overseer().Builder(),
+
                 /**
                  * Cards (Clunker)
                  */
@@ -227,6 +236,13 @@ namespace RainfrostMod
                 new SlagResetKey().Builder(),
 
                 new BoneNeedle().Builder(),
+
+                new Spear().Builder(),
+                new Rock().Builder(),
+                new CherryBomb().Builder(),
+                new ElectricSpear().Builder(),
+                new RedCentipedeScale().Builder(),
+                new Jellyfish().Builder(),
 
                 /**
                  * Card Upgrades

@@ -14,6 +14,9 @@ namespace RainfrostMod.Cards.Companion
             card.attackEffects = [
                 Rainfrost.SStack(Zap.Name, 1),
             ];
+            card.traits = [
+                Rainfrost.TStack(Traits.Iterator.Name),
+            ];
         })
     {
         public const string Name = "SliverOfStraw";

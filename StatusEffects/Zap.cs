@@ -1,4 +1,6 @@
 ﻿using Deadpan.Enums.Engine.Components.Modding;
+using RainfrostMod.Helpers;
+using WildfrostHopeMod.VFX;
 using static StatusEffectApplyX;
 
 namespace RainfrostMod.StatusEffects
@@ -13,6 +15,10 @@ namespace RainfrostMod.StatusEffects
             data.applyFormatKey = Rainfrost.GetStatus<StatusEffectData>("Shroom").applyFormatKey;
             data.dealDamage = true;
             data.countsAsHit = true;
+            data.targetConstraints = [
+                TargetConstraintHelper.General<TargetConstraintIsUnit>("Is Unit"),
+                TargetConstraintHelper.HasCounterOrReaction()
+            ];
         }
     )
     {
@@ -21,14 +27,10 @@ namespace RainfrostMod.StatusEffects
         public override StatusEffectDataBuilder Builder()
         {
             return base.Builder()
-                .WithIconGroupName("health")
                 .WithTextInsert("{a}")
-                .WithKeyword(Keywords.Zap.Name)
-                .WithType("zap")
-                .WithVisible(true)
                 .WithOffensive(true)
                 .WithDoesDamage(true)
-                .WithIsStatus(true);
+                .WithIcon_VFX("zap", "zapicon", Keywords.Zap.Name, VFXMod_StatusEffectHelpers.LayoutGroup.health);
         }
     }
 }
