@@ -16,6 +16,8 @@ namespace RainfrostMod.Cards.Companion
                 Rainfrost.TStack(Slugcat.Name),
                 Rainfrost.TStack("Fragile")
             ];
+
+            card.greetMessages = ["..."];
         })
     {
         public const string Name = "Saint";

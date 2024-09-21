@@ -5,7 +5,6 @@ using RainfrostMod.Cards.Companion;
 using RainfrostMod.Cards.Items;
 using RainfrostMod.Helpers;
 using RainfrostMod.StatusEffects;
-using RainfrostMod.StatusEffects.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -104,7 +103,6 @@ namespace RainfrostMod
 
                 new OnCardPlayedIncreaseHealthAndAttackForEachAlliedSlugcat().Builder(),
 
-                new OnCardPlayedIncreaseAttackOfAlliesInRow().Builder(),
                 new OnCardPlayedReduceAttackOfEnemiesInRow().Builder(),
 
                 new InstantTransformIntoHunterLongLegsPermanent().Builder(),

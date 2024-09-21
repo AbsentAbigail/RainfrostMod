@@ -483,7 +483,6 @@
     <Compile Include="StatusEffects\OnCardPlayedCountDownIteratorAllies.cs" />
     <Compile Include="StatusEffects\OnCardPlayedDamageToNonRotAlliesInRow.cs" />
     <Compile Include="StatusEffects\OnCardPlayedDoubleAllZap.cs" />
-    <Compile Include="StatusEffects\OnCardPlayedIncreaseAttackOfAlliesInRow.cs" />
     <Compile Include="StatusEffects\OnCardPlayedIncreaseHealthToRandomAlly.cs" />
     <Compile Include="StatusEffects\OnCardPlayedAddBoneNeedleToHand.cs" />
     <Compile Include="StatusEffects\OnCardPlayedSummonCopyOfLeftmostCardInHand.cs" />
