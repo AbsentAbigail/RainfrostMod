@@ -1,6 +1,9 @@
 ﻿using Deadpan.Enums.Engine.Components.Modding;
 using HarmonyLib;
 using RainfrostMod.Helpers;
+using System;
+using UnityEngine;
+using static JournalNameHistory;
 
 namespace RainfrostMod.Cards
 {
@@ -19,7 +22,7 @@ namespace RainfrostMod.Cards
             return new CardDataBuilder(Rainfrost.Instance)
                 .CreateUnit(name, title)
                 .SetStats(hp, attack, counter)
-                .SetSprites(spriteName + ".png", spriteName + "BG.png")
+                .SetAddressableSprites(spriteName, spriteName + "BG")
                 .WithPools(UnitPools(pools));
         }
 
@@ -33,7 +36,7 @@ namespace RainfrostMod.Cards
                 .WithCardType("Clunker")
                 .SetStats(null, attack, counter)
                 .SetStartWithEffect(Rainfrost.SStack("Scrap", scrap))
-                .SetSprites(spriteName + ".png", spriteName + "BG.png")
+                .SetAddressableSprites(spriteName, spriteName + "BG")
                 .WithPools(ItemPools(pools));
         }
 
@@ -47,13 +50,24 @@ namespace RainfrostMod.Cards
                 .SetDamage(attack)
                 .NeedsTarget(needsTarget)
                 .WithValue(shopPrice)
-                .SetSprites(spriteName + ".png", spriteName + "BG.png")
+                .SetAddressableSprites(spriteName, spriteName + "BG")
                 .WithPools(ItemPools(pools));
         }
 
         public static CardDataBuilder DropsBling(this CardDataBuilder builder, int amount)
         {
             return builder.WithValue(amount * 36);
+        }
+
+        public static CardDataBuilder SetAddressableSprites(this CardDataBuilder builder, string mainSpriteName, string backgroundSpriteName)
+        {
+            Sprite mainSprite = Rainfrost.Cards.GetSprite(
+                mainSpriteName.Replace(".png", "")
+            );
+            Sprite backgroundSprite = Rainfrost.Cards.GetSprite(
+                backgroundSpriteName.Replace(".png", "")
+            );
+            return builder.SetSprites(mainSprite, backgroundSprite);
         }
 
         public static string[] UnitPools(Pools pool)

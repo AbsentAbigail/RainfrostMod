@@ -5,7 +5,7 @@ using RainfrostMod.Traits;
 namespace RainfrostMod.Cards.Items
 {
     internal class PearlViridian() : AbstractItem(
-        Name, "Light Viridian",
+        Name, "Viridian Pearl",
         0, true,
         Pools.Clunkmaster,
         subscribe: data => data.traits = [

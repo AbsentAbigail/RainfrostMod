@@ -7,9 +7,13 @@ using RainfrostMod.Helpers;
 using RainfrostMod.StatusEffects;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.AddressableAssets.ResourceLocators;
+using UnityEngine.U2D;
 using WildfrostHopeMod.Utils;
 
 namespace RainfrostMod
@@ -21,6 +25,7 @@ namespace RainfrostMod
         public Rainfrost(string directory) : base(directory)
         {
             Instance = this;
+            HarmonyInstance.PatchAll(typeof(PatchHarmony));
         }
 
         public override string GUID => "absentabigail.wildfrost.rainfrost";
@@ -42,6 +47,11 @@ namespace RainfrostMod
 
         public override TMP_SpriteAsset SpriteAsset => assetSprites;
 
+        public static string CatalogFolder => Path.Combine(Instance.ModDirectory, "Windows");
+        public static string CatalogPath => Path.Combine(CatalogFolder, "catalog.json");
+
+        public static SpriteAtlas Cards;
+
         public override void Load()
         {
             if (!loaded) CreateModAssets();
@@ -60,6 +70,13 @@ namespace RainfrostMod
 
         public void CreateModAssets()
         {
+            if (!Addressables.ResourceLocators.Any(r => r is ResourceLocationMap map && map.LocatorId == CatalogPath))
+                Addressables.LoadContentCatalogAsync(CatalogPath).WaitForCompletion();
+            
+            Cards = (SpriteAtlas)Addressables.LoadAssetAsync<UnityEngine.Object>($"Assets/{GUID}/Cards.spriteatlas").WaitForCompletion();
+            if (Cards == null)
+                throw new Exception("Sprite Assets not found");
+
             //Needed to get sprites in text boxes
             assetSprites = HopeUtils.CreateSpriteAsset("assetSprites", directoryWithPNGs: ImagePath("Sprites"), textures: [], sprites: [ImagePath("zap.png").ToSprite()]);
 
@@ -339,6 +356,15 @@ namespace RainfrostMod
             StatusEffectDataBuilder builder = data.Edit<StatusEffectData, StatusEffectDataBuilder>();
             builder.Mod = Instance;
             return builder;
+        }
+
+        [HarmonyPatch(typeof(WildfrostMod.DebugLoggerTextWriter), "WriteLine")]
+        private class PatchHarmony
+        {
+            private static bool Prefix()
+            { Postfix(); return false; }
+
+            private static void Postfix() => HarmonyLib.Tools.Logger.ChannelFilter = (HarmonyLib.Tools.Logger.LogChannel)(8 + 16);
         }
     }
 }
