@@ -15,7 +15,7 @@ namespace RainfrostMod.Cards.Companion
                 card.traits = [
                     Rainfrost.TStack(Iterator.Name)
                 ];
-                card.greetMessages = ["Hello, little creature!"];
+                card.greetMessages = ["Hello little one! Can I join you?"];
             }
         )
     {

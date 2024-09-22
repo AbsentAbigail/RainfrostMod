@@ -103,6 +103,7 @@ namespace RainfrostMod
 
                 new OnCardPlayedIncreaseHealthAndAttackForEachAlliedSlugcat().Builder(),
 
+                new OnCardPlayedIncreaseAttackOfAlliesInRow().Builder(),
                 new OnCardPlayedReduceAttackOfEnemiesInRow().Builder(),
 
                 new InstantTransformIntoHunterLongLegsPermanent().Builder(),
@@ -139,6 +140,17 @@ namespace RainfrostMod
                 new OnCardPlayedIncreaseAttackEffectToSelf().Builder(),
 
                 new WhileActiveGainMultiHitForEachActiveIterators().Builder(),
+
+                new WhenHitAddEggbugEggToHand().Builder(),
+                new InstantSummonEggbugEgg().Builder(),
+                new SummonEggbugEgg().Builder(),
+                new WhenHitAddFirebugEggToHand().Builder(),
+                new InstantSummonFirebugEgg().Builder(),
+                new SummonFirebugEgg().Builder(),
+
+                new InstantApplyFrenzyToApplier().Builder(),
+                new InstantKillAndApplyMultiHitToApplier().Builder(),
+                new PreCardPlayedKillItemsInHandAndGainFrenzyForEach().Builder(),
 
                 /**
                  * Keywords
@@ -201,6 +213,11 @@ namespace RainfrostMod
                 new Centipede().Builder(),
                 new Overseer().Builder(),
 
+                new Inspector().Builder(),
+
+                new Eggbug().Builder(),
+                new Firebug().Builder(),
+
                 /**
                  * Cards (Clunker)
                  */
@@ -241,6 +258,12 @@ namespace RainfrostMod
                 new ElectricSpear().Builder(),
                 new RedCentipedeScale().Builder(),
                 new Jellyfish().Builder(),
+
+                new EggbugEgg().Builder(),
+                new FirebugEgg().Builder(),
+
+                new Mushroom().Builder(),
+                new JokeRifle().Builder(),
 
                 /**
                  * Card Upgrades

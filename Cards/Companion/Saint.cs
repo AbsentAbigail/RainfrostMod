@@ -17,7 +17,7 @@ namespace RainfrostMod.Cards.Companion
                 Rainfrost.TStack("Fragile")
             ];
 
-            card.greetMessages = ["..."];
+            card.greetMessages = ["...? (They stare at you. Maybe they want to join?)"];
         })
     {
         public const string Name = "Saint";

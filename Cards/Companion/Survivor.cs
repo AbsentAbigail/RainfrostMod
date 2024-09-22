@@ -17,7 +17,7 @@ namespace RainfrostMod.Cards.Companion
                 Rainfrost.TStack(Slugcat.Name)
             ];
 
-            card.greetMessages = ["Wawa"];
+            card.greetMessages = ["Wawa? (It seems they are asking to join.)"];
         },
         altSprite: true)
     {

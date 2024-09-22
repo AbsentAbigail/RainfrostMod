@@ -17,7 +17,7 @@ namespace RainfrostMod.Cards.Companion
             card.traits = [
                 Rainfrost.TStack(Traits.Iterator.Name),
             ];
-            card.greetMessages = ["..."];
+            card.greetMessages = ["... (They reach a hand out to you. Take it?)"];
         })
     {
         public const string Name = "SliverOfStraw";

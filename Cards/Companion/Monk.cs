@@ -9,6 +9,7 @@ namespace RainfrostMod.Cards.Companion
         subscribe: card =>
         {
             card.startWithEffects = [
+                Rainfrost.SStack(OnCardPlayedIncreaseAttackOfAlliesInRow.Name, 1),
                 Rainfrost.SStack(OnCardPlayedReduceAttackOfEnemiesInRow.Name, 1),
             ];
 
@@ -16,7 +17,7 @@ namespace RainfrostMod.Cards.Companion
                 Rainfrost.TStack(Slugcat.Name)
             ];
 
-            card.greetMessages = ["Wawa"];
+            card.greetMessages = ["Wa? Wawa! (It seems they want to join.)"];
         },
         altSprite: true)
     {

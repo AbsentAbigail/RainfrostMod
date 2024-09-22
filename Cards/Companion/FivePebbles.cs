@@ -6,17 +6,18 @@ namespace RainfrostMod.Cards.Companion
     internal class FivePebbles() : AbstractUnit(
         "FivePebbles", "Five Pebbles",
             attack: 0, counter: 5,
-            subscribe: data =>
+            subscribe: card =>
             {
-                data.startWithEffects = [
+                card.startWithEffects = [
                     Rainfrost.SStack("Scrap", 3),
                     Rainfrost.SStack(SummonBrotherLongLegs.Name),
                     Rainfrost.SStack("On Card Played Lose Scrap To Self", 1)
                 ];
-                data.traits = [
+                card.traits = [
                     Rainfrost.TStack(Iterator.Name),
                     Rainfrost.TStack("Spark")
                 ];
+                card.greetMessages = ["Fine, since you rescued me I suppose I'll help you."];
             },
             altSprite: true
         )

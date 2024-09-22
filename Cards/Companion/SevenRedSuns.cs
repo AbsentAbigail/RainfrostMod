@@ -16,6 +16,7 @@ namespace RainfrostMod.Cards.Companion
                 Rainfrost.TStack(Traits.Iterator.Name),
                 Rainfrost.TStack("Spark"),
             ];
+            card.greetMessages = ["Greetings, could I perchance join your crew?"];
         })
     {
         public const string Name = "SevenRedSuns";

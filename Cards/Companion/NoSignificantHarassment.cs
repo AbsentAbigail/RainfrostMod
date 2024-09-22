@@ -6,15 +6,16 @@ namespace RainfrostMod.Cards.Companion
     internal class NoSignificantHarassment() : AbstractUnit(
             Name, "No Significant Harassment",
             attack: 0, counter: 4,
-            subscribe: data =>
+            subscribe: card =>
             {
-                data.startWithEffects = [
+                card.startWithEffects = [
                     Rainfrost.SStack("Scrap", 2),
                     Rainfrost.SStack(OnCardPlayedAddNeuronFlyToHand.Name, 1),
                 ];
-                data.traits = [
+                card.traits = [
                     Rainfrost.TStack(Iterator.Name),
                 ];
+                card.greetMessages = ["Yo! Do you mind if I join y'all?"];
             }
         )
     {

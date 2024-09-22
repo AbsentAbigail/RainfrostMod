@@ -16,7 +16,7 @@ namespace RainfrostMod.Cards.Companion
                 Rainfrost.TStack(Slugcat.Name),
             ];
 
-            card.greetMessages = ["Wawa"];
+            card.greetMessages = ["Wa, wawa. (It seems they want to tag along.)"];
         })
     {
         public const string Name = "Gourmand";
