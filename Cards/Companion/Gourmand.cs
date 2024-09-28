@@ -17,7 +17,8 @@ namespace RainfrostMod.Cards.Companion
             ];
 
             card.greetMessages = ["Wa, wawa. (It seems they want to tag along.)"];
-        })
+        },
+        altSprite: true)
     {
         public const string Name = "Gourmand";
     }

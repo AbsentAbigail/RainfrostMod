@@ -4,7 +4,7 @@ using RainfrostMod.Traits;
 namespace RainfrostMod.Cards.Companion
 {
     internal class Slugpup() : AbstractUnit(
-        Name, "Slugpup",
+        Name, "Slugpups",
         2, 1, 3,
         subscribe: card =>
         {
@@ -17,7 +17,8 @@ namespace RainfrostMod.Cards.Companion
             ];
 
             card.greetMessages = ["...Wawa! (It seems they wish to join you.)"];
-        })
+        },
+        altSprite: true)
     {
         public const string Name = "Slugpup";
     }

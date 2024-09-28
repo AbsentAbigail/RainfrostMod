@@ -463,7 +463,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusEffects\AbstractApplyXStatus.cs" />
     <Compile Include="StatusEffects\AbstractStatus.cs" />
+    <Compile Include="StatusEffects\Implementations\StatusEffectApplyXPreTurnIgnoreSilence.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectApplyXOnCardPlayedWithTrait.cs" />
+    <Compile Include="StatusEffects\Implementations\StatusEffectApplyXWhenYLostFix.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectInstantEatCard.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectInstantReplaceInDeck.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectInstantSummonInDeck.cs" />
@@ -510,7 +512,6 @@
     <Compile Include="StatusEffects\OnPearlCardPlayedDraw.cs" />
     <Compile Include="StatusEffects\SummonSingularityBomb.cs" />
     <Compile Include="StatusEffects\WhenScrapLostDamageAlliesInRowAndEnemiesInRow.cs" />
-    <Compile Include="StatusEffects\WhenDestroyedDamageAlliesInRowAndEnemiesInRow.cs" />
     <Compile Include="StatusEffects\OnKillEatTarget.cs" />
     <Compile Include="StatusEffects\OnOomlinCardPlayedCountDownSelf.cs" />
     <Compile Include="StatusEffects\Scriptables\ScriptableTraitsOnBoard.cs" />

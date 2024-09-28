@@ -42,6 +42,7 @@ namespace RainfrostMod.Helpers
             CardPopUpTarget cardPopUp = gameObject.AddComponent<CardPopUpTarget>();
             cardPopUp.keywords = keys;
             cardHover.pop = cardPopUp;
+            cardPopUp.posX = -1; // Display keyword to the left of the card
             RectTransform rectTransform = gameObject.GetComponent<RectTransform>();
             rectTransform.anchorMin = Vector2.zero;
             rectTransform.anchorMax = Vector2.zero;

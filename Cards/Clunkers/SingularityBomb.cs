@@ -11,7 +11,6 @@ namespace RainfrostMod.Cards.Clunkers
         {
             card.startWithEffects = [
                 .. card.startWithEffects,
-                Rainfrost.SStack(WhenDestroyedDamageAlliesInRowAndEnemiesInRow.Name, 50),
                 Rainfrost.SStack(WhenScrapLostDamageAlliesInRowAndEnemiesInRow.Name, 50),
             ];
         })

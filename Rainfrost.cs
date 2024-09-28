@@ -88,7 +88,7 @@ namespace RainfrostMod
             Keywords.Zap.Data();
 
             //make sure you icon is in both the images folder and the sprites subfolder
-            StatusIconHelper.CreateIcon("zap", ImagePath("zap.png").ToSprite(), "zap", "frost", Color.black, [TryGet<KeywordData>(Keywords.Zap.Name)])
+            StatusIconHelper.CreateIcon("zap", Cards.GetSprite("zap"), "zap", "frost", Color.black, [TryGet<KeywordData>(Keywords.Zap.Name)])
                 .GetComponentInChildren<TextMeshProUGUI>(true).enabled = true;
 
             assets = [
@@ -142,7 +142,6 @@ namespace RainfrostMod
                 new OnCardPlayedTransformIntoAttunedSaint().Builder(),
 
                 new SummonSingularityBomb().Builder(),
-                new WhenDestroyedDamageAlliesInRowAndEnemiesInRow().Builder(),
                 new WhenScrapLostDamageAlliesInRowAndEnemiesInRow().Builder(),
 
                 new WhileActiveAddMultiHitToAlliedSlugcats().Builder(),

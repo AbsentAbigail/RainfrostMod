@@ -1,11 +1,12 @@
 ﻿using Deadpan.Enums.Engine.Components.Modding;
 using RainfrostMod.Helpers;
+using RainfrostMod.StatusEffects.Implementations;
 using WildfrostHopeMod.VFX;
 using static StatusEffectApplyX;
 
 namespace RainfrostMod.StatusEffects
 {
-    internal class Zap() : AbstractApplyXStatus<StatusEffectApplyXPreTurn>(
+    internal class Zap() : AbstractApplyXStatus<StatusEffectApplyXPreTurnIgnoreSilence>(
         Name,
         canStack: true,
         canBoost: true,
