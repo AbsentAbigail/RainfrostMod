@@ -14,8 +14,8 @@ namespace RainfrostMod.Helpers
         {
             var status = new StatusEffectDataBuilder(Rainfrost.Instance)
                 .Create<T>(name)
-                .WithCanBeBoosted(canBoost)
-                .WithStackable(canStack);
+                .WithStackable(canStack)
+                .WithCanBeBoosted(canBoost);
 
             if (text != null)
                 status.WithText(text);
@@ -31,7 +31,7 @@ namespace RainfrostMod.Helpers
             string effectToApply = "Snow",
             ApplyToFlags applyToFlags = ApplyToFlags.None) where T : StatusEffectApplyX
         {
-            return DefaultStatusBuilder<T>(name, text, canBoost, canStack)
+            return DefaultStatusBuilder<T>(name: name, text: text, canStack: canStack, canBoost: canBoost)
                 .SubscribeToAfterAllBuildEvent(data =>
                 {
                     var status = data as T;

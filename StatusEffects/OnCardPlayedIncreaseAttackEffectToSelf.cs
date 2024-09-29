@@ -1,10 +1,11 @@
-﻿using static StatusEffectApplyX;
+﻿using Deadpan.Enums.Engine.Components.Modding;
+using static StatusEffectApplyX;
 
 namespace RainfrostMod.StatusEffects
 {
     internal class OnCardPlayedIncreaseAttackEffectToSelf() : AbstractApplyXStatus<StatusEffectApplyXOnCardPlayed>(
         Name, "Increase by {a} when played",
-        true,
+        true, false,
         effectToApply: "Increase Attack Effects",
         applyToFlags: ApplyToFlags.Self
         )

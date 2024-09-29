@@ -380,6 +380,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardScriptRemoveHealthIcon.cs" />
     <Compile Include="Cards\AbstractCard.cs" />
     <Compile Include="Cards\Clunkers\AbstractClunker.cs" />
     <Compile Include="Cards\Clunkers\ScavengerToll.cs" />
@@ -413,6 +414,8 @@
     <Compile Include="Cards\Companion\Spearmaster.cs" />
     <Compile Include="Cards\Companion\Survivor.cs" />
     <Compile Include="Cards\Items\AbstractItem.cs" />
+    <Compile Include="Cards\Items\Hazer.cs" />
+    <Compile Include="Cards\Items\Flashbang.cs" />
     <Compile Include="Cards\Items\BoneNeedle.cs" />
     <Compile Include="Cards\Items\CherryBomb.cs" />
     <Compile Include="Cards\Items\FirebugEgg.cs" />
@@ -444,6 +447,10 @@
     <Compile Include="Cards\Items\Rock.cs" />
     <Compile Include="Cards\Items\ElectricSpear.cs" />
     <Compile Include="Cards\Items\Spear.cs" />
+    <Compile Include="CardUpgrades\AbstractCardUpgrade.cs" />
+    <Compile Include="CardUpgrades\CardUpgradeIterator.cs" />
+    <Compile Include="CardUpgrades\CardUpgradeSlugcat.cs" />
+    <Compile Include="CardUpgrades\CardUpgradeRot.cs" />
     <Compile Include="Helpers\CardUpgradeHelper.cs" />
     <Compile Include="Helpers\KeywordHelper.cs" />
     <Compile Include="Helpers\Pools.cs" />
@@ -480,6 +487,8 @@
     <Compile Include="StatusEffects\InstantEatCard.cs" />
     <Compile Include="StatusEffects\InstantGainExplode.cs" />
     <Compile Include="StatusEffects\InstantKillAndApplyMultiHitToApplier.cs" />
+    <Compile Include="StatusEffects\OnCardPlayedApplyNullToRandomAlly.cs" />
+    <Compile Include="StatusEffects\OnCardPlayedTakeHealthFromNonRotAllies.cs" />
     <Compile Include="StatusEffects\PreCardPlayedKillItemsInHandAndGainFrenzyForEach.cs" />
     <Compile Include="StatusEffects\Scriptables\ScriptableCardTypeInHand.cs" />
     <Compile Include="StatusEffects\InstantSummonFirebugEgg.cs" />

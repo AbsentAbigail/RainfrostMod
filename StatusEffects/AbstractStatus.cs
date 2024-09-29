@@ -18,8 +18,12 @@ namespace RainfrostMod.StatusEffects
         public virtual StatusEffectDataBuilder Builder()
         {
             subscribe ??= delegate { };
-            return StatusEffectHelper.DefaultStatusBuilder<T>(name, text, canStack, canBoost)
-                .SubscribeToAfterAllBuildEvent(d => subscribe.Invoke(d as T));
+            return StatusEffectHelper.DefaultStatusBuilder<T>(
+                name: name,
+                text: text,
+                canStack: canStack,
+                canBoost: canBoost
+                ).SubscribeToAfterAllBuildEvent(d => subscribe.Invoke(d as T));
         }
     }
 }

@@ -23,8 +23,14 @@ namespace RainfrostMod.StatusEffects
         public override StatusEffectDataBuilder Builder()
         {
             subscribe ??= delegate { };
-            return StatusEffectHelper.DefaultApplyXBuilder<T>(name, text, canStack, canBoost, effectToApply, applyToFlags)
-                .SubscribeToAfterAllBuildEvent(d => subscribe.Invoke(d as T));
+            return StatusEffectHelper.DefaultApplyXBuilder<T>(
+                name: name,
+                text: text,
+                canStack: canStack,
+                canBoost: canBoost,
+                effectToApply: effectToApply,
+                applyToFlags: applyToFlags
+                ).SubscribeToAfterAllBuildEvent(d => subscribe.Invoke(d as T));
         }
     }
 }
