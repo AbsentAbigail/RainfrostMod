@@ -17,11 +17,11 @@ namespace RainfrostMod.StatusEffects.Implementations
                 base.PreAttack += CheckTransformBoss;
         }
 
-        public override bool RunPostHitEvent(Hit hit)
+        public override bool RunPreAttackEvent(Hit hit)
         {
-            if (hit.target != target)
+            if (hit.attacker != target)
                 return false;
-            
+
             if (target.hp.current > 0 || target.FindStatus("Scrap")?.count > 0)
                 return false;
 

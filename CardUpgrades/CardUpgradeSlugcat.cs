@@ -3,7 +3,7 @@
 namespace RainfrostMod.CardUpgrades
 {
     internal class CardUpgradeSlugcat() : AbstractCardUpgrade(
-        Name, "Slugcat Charm",
+        Name, "Scug Charm",
         $"+1 <keyword=attack>\nGain {Keywords.Slugcat.Tag}",
         subscribe: charm =>
         {

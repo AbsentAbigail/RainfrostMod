@@ -3,6 +3,7 @@ using HarmonyLib;
 using RainfrostMod.Cards.Clunkers;
 using RainfrostMod.Cards.Companion;
 using RainfrostMod.Cards.Items;
+using RainfrostMod.CardUpgrades;
 using RainfrostMod.Helpers;
 using RainfrostMod.StatusEffects;
 using System;
@@ -34,7 +35,7 @@ namespace RainfrostMod
 
         public override string Title => "Rainfrost";
 
-        public override string Description => "Rainworld themed mod. Concepts by Moondial. Alternate art by Sudux";
+        public override string Description => "Rainworld themed mod\nMade by Moondial, Sudux, KDeveloper, AbsentAbigail";
 
         private List<object> assets;
         private bool loaded = false;
@@ -107,7 +108,6 @@ namespace RainfrostMod
                 new SummonBrotherLongLegs().Builder(),
                 new TransformIntoDaddyLongLegsOnCardPlayed().Builder(),
                 new TransformIntoMotherLongLegsOnCardPlayed().Builder(),
-                new OnCardPlayedDamageToNonRotAlliesInRow().Builder(),
 
                 new OnCardPlayedAddNeuronFlyToHand().Builder(),
                 new InstantSummonNeuronFly().Builder(),
@@ -125,8 +125,6 @@ namespace RainfrostMod
 
                 new InstantTransformIntoHunterLongLegsPermanent().Builder(),
                 new WhenDestroyedTransformSelfIntoHunterLongLegs().Builder(),
-                new InstantEatCard().Builder(),
-                new OnKillEatTarget().Builder(),
 
                 new OnCardPlayedAddBoneNeedleToHand().Builder(),
                 new InstantSummonBoneNeedle().Builder(),
@@ -167,6 +165,13 @@ namespace RainfrostMod
                 new InstantApplyFrenzyToApplier().Builder(),
                 new InstantKillAndApplyMultiHitToApplier().Builder(),
                 new PreCardPlayedKillItemsInHandAndGainFrenzyForEach().Builder(),
+
+                new OnCardPlayedApplyNullToRandomAlly().Builder(),
+
+                new OnKillGainAttackAndHealth().Builder(),
+                new OnCardPlayedTriggerAgainstNonRotAlliesInRow().Builder(),
+
+                new WhenCardConsumedApplyHealToSelf().Builder(),
 
                 /**
                  * Keywords
@@ -281,9 +286,15 @@ namespace RainfrostMod
                 new Mushroom().Builder(),
                 new JokeRifle().Builder(),
 
+                new Flashbang().Builder(),
+                new Hazer().Builder(),
+
                 /**
                  * Card Upgrades
                  */
+                new CardUpgradeRot().Builder(),
+                new CardUpgradeIterator().Builder(),
+                new CardUpgradeSlugcat().Builder(),
             ];
 
             loaded = true;

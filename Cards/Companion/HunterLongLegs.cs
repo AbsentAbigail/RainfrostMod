@@ -1,5 +1,4 @@
 ﻿using RainfrostMod.Helpers;
-using RainfrostMod.StatusEffects;
 
 namespace RainfrostMod.Cards.Companion
 {
@@ -9,12 +8,9 @@ namespace RainfrostMod.Cards.Companion
         Pools.None,
         card =>
         {
-            card.startWithEffects = [
-                Rainfrost.SStack(OnKillEatTarget.Name),
-            ];
-
             card.traits = [
                 Rainfrost.TStack(Traits.Rot.Name),
+                Rainfrost.TStack("Barrage"),
             ];
         })
     {

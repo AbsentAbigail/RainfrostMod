@@ -1,5 +1,4 @@
 ﻿using RainfrostMod.Helpers;
-using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
 namespace RainfrostMod.Cards.Companion
@@ -11,7 +10,6 @@ namespace RainfrostMod.Cards.Companion
             subscribe: data =>
             {
                 data.startWithEffects = [
-                    Rainfrost.SStack(OnCardPlayedDamageToNonRotAlliesInRow.Name, 6),
                     Rainfrost.SStack("When X Health Lost Split", 3),
                 ];
                 data.traits = [

@@ -5,11 +5,12 @@ namespace RainfrostMod.Cards.Companion
 {
     internal class Saint() : AbstractUnit(
         Name, "Saint",
-        health: 1, counter: 2,
+        health: 2, counter: 2,
         subscribe: card =>
         {
             card.startWithEffects = [
                 Rainfrost.SStack(OnCardPlayedTransformIntoAttunedSaint.Name, 10),
+                Rainfrost.SStack("ImmuneToSnow"),
             ];
 
             card.traits = [

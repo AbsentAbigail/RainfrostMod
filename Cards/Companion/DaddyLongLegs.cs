@@ -11,7 +11,6 @@ namespace RainfrostMod.Cards.Companion
             subscribe: data =>
             {
                 data.startWithEffects = [
-                    Rainfrost.SStack(OnCardPlayedDamageToNonRotAlliesInRow.Name, 4),
                     Rainfrost.SStack(TransformIntoMotherLongLegsOnCardPlayed.Name, 1),
                 ];
                 data.traits = [

@@ -4,7 +4,7 @@ using RainfrostMod.Keywords;
 namespace RainfrostMod.CardUpgrades
 {
     internal class CardUpgradeIterator() : AbstractCardUpgrade(
-        Name, "Iterator Charm",
+        Name, "Tech Charm",
         $"Replace <keyword=health> with 3<keyword=scrap>\nGain {Iterator.Tag}",
         subscribe: charm =>
         {

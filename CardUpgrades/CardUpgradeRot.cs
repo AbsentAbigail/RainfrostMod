@@ -1,18 +1,20 @@
-﻿using Deadpan.Enums.Engine.Components.Modding;
-using RainfrostMod.Helpers;
+﻿using RainfrostMod.Helpers;
 using RainfrostMod.StatusEffects;
 
 namespace RainfrostMod.CardUpgrades
 {
     internal class CardUpgradeRot() : AbstractCardUpgrade(
-        Name, "Rot Charm",
-        $"Take <1><keyword=health> from all non-{Keywords.Rot.Tag} allies\nGain {Keywords.Rot.Tag}",
+        Name, "Cyst Charm",
+        $"On kill, gain <+1><keyword=health> and <+1><keyword=attack>\nGain {Keywords.Rot.Tag}",
         subscribe: charm =>
         {
-            charm.effects = [Rainfrost.SStack(OnCardPlayedTakeHealthFromNonRotAllies.Name, 1)];
+            charm.effects = [
+                Rainfrost.SStack(OnKillGainAttackAndHealth.Name, 1),
+            ];
             charm.giveTraits = [Rainfrost.TStack(Traits.Rot.Name)];
             charm.targetConstraints = [
-                TargetConstraintHelper.HasCounterOrReaction(),
+                TargetConstraintHelper.HealthMoreThan(0),
+                TargetConstraintHelper.General<TargetConstraintDoesDamage>("Does Damage"),
                 TargetConstraintHelper.HasTrait(Traits.Rot.Name, not: true)
             ];
         })

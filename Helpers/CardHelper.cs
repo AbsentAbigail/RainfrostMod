@@ -1,9 +1,7 @@
 ﻿using Deadpan.Enums.Engine.Components.Modding;
 using HarmonyLib;
 using RainfrostMod.Helpers;
-using System;
 using UnityEngine;
-using static JournalNameHistory;
 
 namespace RainfrostMod.Cards
 {

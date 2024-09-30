@@ -480,15 +480,15 @@
     <Compile Include="StatusEffects\Implementations\StatusEffectOngoingHealth.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectOngoingMultiple.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectTransformOnCardPlayed.cs" />
-    <Compile Include="StatusEffects\Implementations\StatusEffectAbsorbOnKill.cs" />
+    <Compile Include="StatusEffects\Implementations\StatusEffectWhenAnyCardDestroyedApplyX.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectWhileActiveXBoostableScriptable.cs" />
     <Compile Include="StatusEffects\InstantApplyFrenzyToApplier.cs" />
     <Compile Include="StatusEffects\InstantDoubleZap.cs" />
-    <Compile Include="StatusEffects\InstantEatCard.cs" />
     <Compile Include="StatusEffects\InstantGainExplode.cs" />
     <Compile Include="StatusEffects\InstantKillAndApplyMultiHitToApplier.cs" />
     <Compile Include="StatusEffects\OnCardPlayedApplyNullToRandomAlly.cs" />
-    <Compile Include="StatusEffects\OnCardPlayedTakeHealthFromNonRotAllies.cs" />
+    <Compile Include="StatusEffects\OnCardPlayedTriggerAgainstNonRotAlliesInRow.cs" />
+    <Compile Include="StatusEffects\OnKillGainAttackAndHealth.cs" />
     <Compile Include="StatusEffects\PreCardPlayedKillItemsInHandAndGainFrenzyForEach.cs" />
     <Compile Include="StatusEffects\Scriptables\ScriptableCardTypeInHand.cs" />
     <Compile Include="StatusEffects\InstantSummonFirebugEgg.cs" />
@@ -500,6 +500,7 @@
     <Compile Include="StatusEffects\InstantTransformIntoHunterLongLegsPermanent.cs" />
     <Compile Include="StatusEffects\SummonFirebugEgg.cs" />
     <Compile Include="StatusEffects\SummonEggbugEgg.cs" />
+    <Compile Include="StatusEffects\WhenCardConsumedApplyHealToSelf.cs" />
     <Compile Include="StatusEffects\WhenHitAddFirebugEggToHand.cs" />
     <Compile Include="StatusEffects\WhenHitAddEggbugEggToHand.cs" />
     <Compile Include="StatusEffects\OnCardPlayedAddExplodeToAllAllies.cs" />
@@ -510,7 +511,6 @@
     <Compile Include="StatusEffects\WhileActiveGainMultiHitForEachActiveIterators.cs" />
     <Compile Include="StatusEffects\OnCardPlayedIncreaseAttackEffectToSelf.cs" />
     <Compile Include="StatusEffects\OnCardPlayedCountDownIteratorAllies.cs" />
-    <Compile Include="StatusEffects\OnCardPlayedDamageToNonRotAlliesInRow.cs" />
     <Compile Include="StatusEffects\OnCardPlayedDoubleAllZap.cs" />
     <Compile Include="StatusEffects\OnCardPlayedIncreaseHealthToRandomAlly.cs" />
     <Compile Include="StatusEffects\OnCardPlayedAddBoneNeedleToHand.cs" />
@@ -521,7 +521,6 @@
     <Compile Include="StatusEffects\OnPearlCardPlayedDraw.cs" />
     <Compile Include="StatusEffects\SummonSingularityBomb.cs" />
     <Compile Include="StatusEffects\WhenScrapLostDamageAlliesInRowAndEnemiesInRow.cs" />
-    <Compile Include="StatusEffects\OnKillEatTarget.cs" />
     <Compile Include="StatusEffects\OnOomlinCardPlayedCountDownSelf.cs" />
     <Compile Include="StatusEffects\Scriptables\ScriptableTraitsOnBoard.cs" />
     <Compile Include="StatusEffects\SummonBoneNeedle.cs" />

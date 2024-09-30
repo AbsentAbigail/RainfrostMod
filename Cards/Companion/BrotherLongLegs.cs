@@ -12,7 +12,6 @@ namespace RainfrostMod.Cards.Companion
             {
                 data.startWithEffects = [
                     Rainfrost.SStack(TransformIntoDaddyLongLegsOnCardPlayed.Name, 1),
-                    Rainfrost.SStack(OnCardPlayedDamageToNonRotAlliesInRow.Name, 2),
                 ];
                 data.traits = [
                     Rainfrost.TStack(Rot.Name),

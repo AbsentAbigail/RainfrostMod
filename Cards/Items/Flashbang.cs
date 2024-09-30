@@ -6,7 +6,6 @@ namespace RainfrostMod.Cards.Items
     internal class Flashbang() : AbstractItem(
         Name, "Flashbang",
         0, true,
-        pools: Pools.Clunkmaster,
         subscribe: card =>
         {
             card.attackEffects = [

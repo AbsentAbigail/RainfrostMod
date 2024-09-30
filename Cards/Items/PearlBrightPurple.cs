@@ -1,4 +1,5 @@
 ﻿using Deadpan.Enums.Engine.Components.Modding;
+using RainfrostMod.Helpers;
 using RainfrostMod.Traits;
 
 namespace RainfrostMod.Cards.Items
@@ -6,6 +7,7 @@ namespace RainfrostMod.Cards.Items
     internal class PearlBrightPurple() : AbstractItem(
         Name, "Bright Purple Pearl",
         0, true,
+        pools: Pools.None,
         subscribe: data => data.traits = [
             Rainfrost.TStack("Consume"),
             Rainfrost.TStack("Zoomlin"),

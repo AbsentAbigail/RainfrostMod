@@ -5,17 +5,21 @@ namespace RainfrostMod.Cards.Companion
 {
     internal class AttunedSaint() : AbstractUnit(
         Name, "Attuned Saint",
-        1, 0, 2,
+        2, 0, 2,
         Pools.None,
         card =>
         {
             card.attackEffects = [
-                Rainfrost.SStack("Reduce Max Health", 50)
+                Rainfrost.SStack("Reduce Max Health", 50),
+            ];
+
+            card.startWithEffects = [
+                Rainfrost.SStack("ImmuneToSnow"),
             ];
 
             card.traits = [
                 Rainfrost.TStack(Slugcat.Name),
-                Rainfrost.TStack("Fragile")
+                Rainfrost.TStack("Fragile"),
             ];
 
             card.greetMessages = ["Wawa"];

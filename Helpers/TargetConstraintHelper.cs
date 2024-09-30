@@ -35,6 +35,13 @@ namespace RainfrostMod.Helpers
             return targetConstraint;
         }
 
+        public static TargetConstraintAttackMoreThan AttackMoreThan(int moreThan, Action<TargetConstraintAttackMoreThan> modification = null, bool not = false)
+        {
+            var targetConstraint = General(not ? "Does Not Have" : "Has" + $" Attack More Than {moreThan}", modification, not);
+            targetConstraint.value = moreThan;
+            return targetConstraint;
+        }
+
         public static TargetConstraintHealthMoreThan HealthMoreThan(int moreThan, Action<TargetConstraintHealthMoreThan> modification = null, bool not = false)
         {
             var targetConstraint = General(not ? "Does Not Have" : "Has" + $" Health More Than {moreThan}", modification, not);
