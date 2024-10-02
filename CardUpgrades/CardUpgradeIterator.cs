@@ -11,8 +11,7 @@ namespace RainfrostMod.CardUpgrades
             charm.effects = [Rainfrost.SStack("Scrap", 3)];
             charm.giveTraits = [Rainfrost.TStack(Traits.Iterator.Name)];
             charm.targetConstraints = [
-                TargetConstraintHelper.General<TargetConstraintHasHealth>(),
-                TargetConstraintHelper.HasTrait(Traits.Iterator.Name, not: true)
+                TargetConstraintHelper.General<TargetConstraintHasHealth>("Has Health"),
             ];
             charm.setHp = true;
             charm.hpChange = 0;

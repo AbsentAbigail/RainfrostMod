@@ -10,7 +10,7 @@ namespace RainfrostMod.Cards.Companion
         card =>
         {
             card.attackEffects = [
-                Rainfrost.SStack("Reduce Max Health", 50),
+                Rainfrost.SStack("Kill", 1),
             ];
 
             card.startWithEffects = [

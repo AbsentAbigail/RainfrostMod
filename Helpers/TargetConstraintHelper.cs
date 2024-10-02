@@ -24,10 +24,31 @@ namespace RainfrostMod.Helpers
             targetConstraint.trait = Rainfrost.TryGet<TraitData>(trait);
             return targetConstraint;
         }
+        public static TargetConstraintAnd ApplyCharmConstraint(Action<TargetConstraintAnd> modification = null, bool not = false)
+        {
+            var targetConstraint = And("Does Trigger, Plays On Board, Does Not Play On Slot", not,
+                DoesTrigger(),
+                General<TargetConstraintPlayOnSlot>("Plays On Board", tc => tc.board = true),
+                General<TargetConstraintPlayOnSlot>("Does Not Play On Slot", tc => tc.slot = true, true)
+            );
+            modification?.Invoke(targetConstraint);
+            return targetConstraint;
+        }
+
+        public static TargetConstraintOr DoesTrigger(Action<TargetConstraintOr> modification = null, bool not = false)
+        {
+            var targetConstraint = Or(not ? "Does Not Trigger" : "Does Trigger", not,
+                MaxCounterMoreThan(0),
+                General<TargetConstraintHasReaction>("Has Reaction"),
+                General<TargetConstraintIsItem>("Is Item")
+            );
+            modification?.Invoke(targetConstraint);
+            return targetConstraint;
+        }
 
         public static TargetConstraintOr HasCounterOrReaction(Action<TargetConstraintOr> modification = null, bool not = false)
         {
-            var targetConstraint = Or("Has Counter Or Reaction", not,
+            var targetConstraint = Or(not ? "Does Not Have Counter Or Reaction" : "Has Counter Or Reaction", not,
                 MaxCounterMoreThan(0),
                 General<TargetConstraintHasReaction>("Has Reaction")
             );

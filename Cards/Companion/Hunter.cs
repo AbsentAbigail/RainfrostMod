@@ -17,7 +17,8 @@ namespace RainfrostMod.Cards.Companion
             ];
 
             card.greetMessages = ["Wawa... Wa? (They are thinking about joining you.)"];
-        })
+        },
+        altSprite:true)
     {
         public const string Name = "Hunter";
     }

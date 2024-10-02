@@ -73,7 +73,7 @@ namespace RainfrostMod
         {
             if (!Addressables.ResourceLocators.Any(r => r is ResourceLocationMap map && map.LocatorId == CatalogPath))
                 Addressables.LoadContentCatalogAsync(CatalogPath).WaitForCompletion();
-            
+
             Cards = (SpriteAtlas)Addressables.LoadAssetAsync<UnityEngine.Object>($"Assets/{GUID}/Cards.spriteatlas").WaitForCompletion();
             if (Cards == null)
                 throw new Exception("Sprite Assets not found");
@@ -172,6 +172,8 @@ namespace RainfrostMod
                 new OnCardPlayedTriggerAgainstNonRotAlliesInRow().Builder(),
 
                 new WhenCardConsumedApplyHealToSelf().Builder(),
+
+                new Kill().Builder(),
 
                 /**
                  * Keywords
@@ -295,6 +297,8 @@ namespace RainfrostMod
                 new CardUpgradeRot().Builder(),
                 new CardUpgradeIterator().Builder(),
                 new CardUpgradeSlugcat().Builder(),
+                new CardUpgradeZap().Builder(),
+                new CardUpgradeBattery().Builder(),
             ];
 
             loaded = true;
@@ -321,7 +325,7 @@ namespace RainfrostMod
         public override List<T> AddAssets<T, Y>()
         {
             if (assets.OfType<T>().Any())
-                LogHelper.Warn($"[{Title}] adding {typeof(Y).Name}s: {assets.OfType<T>().Select(a => a._data.name).Join()}");
+                LogHelper.Log($"Adding {typeof(Y).Name}s: {assets.OfType<T>().Select(a => a._data.name).Join()}");
             return assets.OfType<T>().ToList();
         }
 

@@ -1,10 +1,12 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using RainfrostMod.Helpers;
+using RainfrostMod.StatusEffects;
 
 namespace RainfrostMod.Cards.Companion
 {
     internal class Centipede() : AbstractUnit(
         Name, "Centipede",
         8, 0, 4,
+        pools: Pools.None,
         subscribe: card =>
         {
             card.attackEffects = [Rainfrost.SStack(Zap.Name, 2)];

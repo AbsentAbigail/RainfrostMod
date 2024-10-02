@@ -13,9 +13,8 @@ namespace RainfrostMod.CardUpgrades
             ];
             charm.giveTraits = [Rainfrost.TStack(Traits.Rot.Name)];
             charm.targetConstraints = [
-                TargetConstraintHelper.HealthMoreThan(0),
+                TargetConstraintHelper.General<TargetConstraintHasHealth>("Has Health"),
                 TargetConstraintHelper.General<TargetConstraintDoesDamage>("Does Damage"),
-                TargetConstraintHelper.HasTrait(Traits.Rot.Name, not: true)
             ];
         })
     {

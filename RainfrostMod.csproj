@@ -449,6 +449,8 @@
     <Compile Include="Cards\Items\Spear.cs" />
     <Compile Include="CardUpgrades\AbstractCardUpgrade.cs" />
     <Compile Include="CardUpgrades\CardUpgradeIterator.cs" />
+    <Compile Include="CardUpgrades\CardUpgradeBattery.cs" />
+    <Compile Include="CardUpgrades\CardUpgradeZap.cs" />
     <Compile Include="CardUpgrades\CardUpgradeSlugcat.cs" />
     <Compile Include="CardUpgrades\CardUpgradeRot.cs" />
     <Compile Include="Helpers\CardUpgradeHelper.cs" />
@@ -486,6 +488,7 @@
     <Compile Include="StatusEffects\InstantDoubleZap.cs" />
     <Compile Include="StatusEffects\InstantGainExplode.cs" />
     <Compile Include="StatusEffects\InstantKillAndApplyMultiHitToApplier.cs" />
+    <Compile Include="StatusEffects\Kill.cs" />
     <Compile Include="StatusEffects\OnCardPlayedApplyNullToRandomAlly.cs" />
     <Compile Include="StatusEffects\OnCardPlayedTriggerAgainstNonRotAlliesInRow.cs" />
     <Compile Include="StatusEffects\OnKillGainAttackAndHealth.cs" />

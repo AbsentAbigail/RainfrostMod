@@ -9,7 +9,6 @@ namespace RainfrostMod.StatusEffects
     internal class Zap() : AbstractApplyXStatus<StatusEffectApplyXPreTurnIgnoreSilence>(
         Name,
         canStack: true,
-        canBoost: true,
         applyToFlags: ApplyToFlags.Self,
         subscribe: data =>
         {

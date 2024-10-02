@@ -4,7 +4,7 @@ namespace RainfrostMod.Cards.Companion
 {
     internal class HunterLongLegs() : AbstractUnit(
         Name, "Hunter Long Legs",
-        6, 4, 4,
+        6, 4, 3,
         Pools.None,
         card =>
         {
@@ -12,7 +12,8 @@ namespace RainfrostMod.Cards.Companion
                 Rainfrost.TStack(Traits.Rot.Name),
                 Rainfrost.TStack("Barrage"),
             ];
-        })
+        },
+        altSprite: true)
     {
         public const string Name = "HunterLongLegs";
     }
