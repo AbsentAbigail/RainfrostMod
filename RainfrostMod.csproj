@@ -472,6 +472,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StatusEffects\AbstractApplyXStatus.cs" />
     <Compile Include="StatusEffects\AbstractStatus.cs" />
+    <Compile Include="StatusEffects\Implementations\StatusEffectApplyXOnCardPlayedBoostableScriptable.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectApplyXPreTurnIgnoreSilence.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectApplyXOnCardPlayedWithTrait.cs" />
     <Compile Include="StatusEffects\Implementations\StatusEffectApplyXWhenYLostFix.cs" />
@@ -523,7 +524,6 @@
     <Compile Include="StatusEffects\OnCardPlayedTransformIntoAttunedSaint.cs" />
     <Compile Include="StatusEffects\OnPearlCardPlayedDraw.cs" />
     <Compile Include="StatusEffects\SummonSingularityBomb.cs" />
-    <Compile Include="StatusEffects\WhenScrapLostDamageAlliesInRowAndEnemiesInRow.cs" />
     <Compile Include="StatusEffects\OnOomlinCardPlayedCountDownSelf.cs" />
     <Compile Include="StatusEffects\Scriptables\ScriptableTraitsOnBoard.cs" />
     <Compile Include="StatusEffects\SummonBoneNeedle.cs" />
@@ -544,6 +544,7 @@
     <Compile Include="Traits\Pearl.cs" />
     <Compile Include="Traits\Rot.cs" />
     <Compile Include="Traits\Slugcat.cs" />
+    <Compile Include="StatusEffects\WhenScrapLostDamageAlliesInRowAndEnemiesInRow.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

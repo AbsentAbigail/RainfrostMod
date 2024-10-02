@@ -1,11 +1,12 @@
 ﻿using RainfrostMod.Helpers;
+using RainfrostMod.StatusEffects.Implementations;
 using RainfrostMod.StatusEffects.Scriptables;
 using static StatusEffectApplyX;
 
 namespace RainfrostMod.StatusEffects
 {
-    internal class OnCardPlayedIncreaseHealthAndAttackForEachAlliedSlugcat() : AbstractApplyXStatus<StatusEffectApplyXOnCardPlayed>(
-        Name, $"Gain <{{a}}><keyword=attack> and <keyword=health> for each allied {Keywords.Slugcat.Tag}",
+    internal class OnCardPlayedIncreaseHealthAndAttackForEachAlliedSlugcat() : AbstractApplyXStatus<StatusEffectApplyXOnCardPlayedBoostableScriptable>(
+        Name, $"Gain <+{{a}}><keyword=attack> and <+{{a}}><keyword=health> for each allied {Keywords.Slugcat.Tag}",
         true, true,
         "Increase Attack & Health", ApplyToFlags.Self,
         status =>
