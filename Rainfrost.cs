@@ -175,6 +175,8 @@ namespace RainfrostMod
 
                 new Kill().Builder(),
 
+                new TargetModeFullRow().Builder(),
+
                 /**
                  * Keywords
                  */
@@ -182,6 +184,8 @@ namespace RainfrostMod
                 new Keywords.Pearl().Builder(),
                 new Keywords.Rot().Builder(),
                 new Keywords.Slugcat().Builder(),
+
+                new Keywords.SingularityBomb().Builder(),
 
                 /**
                  * Traits

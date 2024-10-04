@@ -465,6 +465,7 @@
     <Compile Include="Keywords\Iterator.cs" />
     <Compile Include="Keywords\Rot.cs" />
     <Compile Include="Keywords\Pearl.cs" />
+    <Compile Include="Keywords\SingularityBomb.cs" />
     <Compile Include="Keywords\Slugcat.cs" />
     <Compile Include="Keywords\Zap.cs" />
     <Compile Include="Rainfrost.cs" />
@@ -504,6 +505,8 @@
     <Compile Include="StatusEffects\InstantTransformIntoHunterLongLegsPermanent.cs" />
     <Compile Include="StatusEffects\SummonFirebugEgg.cs" />
     <Compile Include="StatusEffects\SummonEggbugEgg.cs" />
+    <Compile Include="StatusEffects\TargetModeFullRow.cs" />
+    <Compile Include="StatusEffects\TargetModes\TargetModeFullRow.cs" />
     <Compile Include="StatusEffects\WhenCardConsumedApplyHealToSelf.cs" />
     <Compile Include="StatusEffects\WhenHitAddFirebugEggToHand.cs" />
     <Compile Include="StatusEffects\WhenHitAddEggbugEggToHand.cs" />
