@@ -1,6 +1,4 @@
-﻿using RainfrostMod.Helpers;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -46,31 +44,25 @@ namespace RainfrostMod.StatusEffects.Implementations
 
         public override bool CanTrigger()
         {
-            LogHelper.Log("Can Trigger");
             bool result = false;
             if (target.enabled)
                 result = !affectedBySnow || !target.IsSnowed && !target.paused;
-            LogHelper.Log("Result: " + result);
+
             if (!result || !dealDamage)
                 return effectToApply;
-            LogHelper.Log("True");
+
             return true;
         }
 
         public override int GetAmount()
         {
             if (!target)
-            {
                 return 0;
-            }
 
             if (!canBeBoosted)
-            {
                 return count;
-            }
 
             return Mathf.Max(0, Mathf.RoundToInt((float)(count + target.effectBonus) * target.effectFactor));
         }
-
     }
 }

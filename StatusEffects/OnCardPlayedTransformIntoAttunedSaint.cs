@@ -14,6 +14,7 @@ namespace RainfrostMod.StatusEffects
 
             status.animation = fg.animation;
             status.nextPhase = Rainfrost.TryGet<CardData>(cardName);
+            status.keepUpgrades = true;
         })
     {
         public const string Name = "On Card Played Transforrm Into Attuned Saint";

@@ -5,6 +5,8 @@ namespace RainfrostMod.StatusEffects.Implementations
 {
     internal class StatusEffectTransformOnCardPlayed : StatusEffectNextPhase
     {
+        public bool keepUpgrades;
+
         public override void Init()
         {
         }
@@ -38,13 +40,30 @@ namespace RainfrostMod.StatusEffects.Implementations
             activated = true;
             if ((bool)nextPhase)
             {
-                ActionQueue.Stack(new ActionChangePhase(target, nextPhase.Clone(), animation)
+                ActionQueue.Stack(new ActionChangePhase(target, TransformInto(), animation)
                 {
                     priority = 10
                 }, fixedPosition: true);
                 return;
             }
             throw new ArgumentException("Next phase not given!");
+        }
+
+        private CardData TransformInto()
+        {
+            var card = nextPhase.Clone();
+
+            if (!keepUpgrades)
+                return card;
+            
+            foreach (CardUpgradeData upgrade in target.data.upgrades)
+            {
+                var upgradeCopy = Rainfrost.TryGet<CardUpgradeData>(upgrade.name).Clone();
+                if (upgradeCopy.CanAssign(card))
+                    upgradeCopy.Assign(card);
+            }
+
+            return card;
         }
     }
 }

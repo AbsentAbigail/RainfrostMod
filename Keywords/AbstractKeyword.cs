@@ -3,18 +3,11 @@ using RainfrostMod.Helpers;
 
 namespace RainfrostMod.Keywords
 {
-    internal abstract class AbstractKeyword
+    internal abstract class AbstractKeyword(string name, string title, string description)
     {
-        private readonly string name;
-        private readonly string title;
-        private readonly string description;
-
-        public AbstractKeyword(string name, string title, string description)
-        {
-            this.name = name;
-            this.title = title;
-            this.description = description;
-        }
+        private readonly string name = name;
+        private readonly string title = title;
+        private readonly string description = description;
 
         public virtual KeywordDataBuilder Builder()
         {

@@ -9,7 +9,7 @@ namespace RainfrostMod.StatusEffects.Implementations
 
         public override IEnumerator Process()
         {
-            LogHelper.Log("Hunter Destroyed, transform deck copy into Hunter Long Legs");
+            LogHelper.Log($"[{target.data.name}] destroyed, transform deck copy into [{replaceWith.name}]");
             Transform();
             yield return base.Process();
         }
@@ -22,13 +22,15 @@ namespace RainfrostMod.StatusEffects.Implementations
 
             foreach (CardUpgradeData upgrade in current.upgrades)
             {
-                if (upgrade.CanAssign(transformInto))
+                var upgradeCopy = Rainfrost.TryGet<CardUpgradeData>(upgrade.name).Clone();
+
+                if (upgradeCopy.CanAssign(transformInto))
                 {
-                    upgrade.Assign(transformInto);
+                    upgradeCopy.Assign(transformInto);
                 }
                 else
                 {
-                    inventory.upgrades.Add(Rainfrost.TryGet<CardUpgradeData>(upgrade.name).Clone());
+                    inventory.upgrades.Add(upgradeCopy);
                 }
             }
 
@@ -44,11 +46,7 @@ namespace RainfrostMod.StatusEffects.Implementations
             if (baseCard.title != current.title)
             {
                 transformInto.forceTitle = current.title;
-                if (card != null)
-                {
-                    card.SetName(current.title);
-                    UnityEngine.Debug.Log("[Pokefrost] renamed evolution to " + current.title);
-                }
+                card?.SetName(current.title);
                 Events.InvokeRename(card.entity, current.title);
             }
 
