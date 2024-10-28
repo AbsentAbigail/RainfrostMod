@@ -12,10 +12,9 @@ internal class OnCardPlayedAddNeuronFlyToHand() : AbstractApplyXStatus<StatusEff
     {
         return AbsentUtils.StatusCopy("On Card Played Add Junk To Hand", Name)
             .WithText("Add <{a}> {0} to hand")
-            .WithTextInsert(CardHelper.CardTag(NeuronFly.Name))
+            .WithTextInsert(AbstractCard.CardTag(NeuronFly.Name))
             .SubscribeToAfterAllBuildEvent(data =>
-                (data as StatusEffectApplyX).effectToApply =
-                AbsentUtils.GetStatus(InstantSummonNeuronFly.Name)
+                ((StatusEffectApplyX)data).effectToApply = AbsentUtils.GetStatus(InstantSummonNeuronFly.Name)
             );
     }
 }

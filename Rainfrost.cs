@@ -52,9 +52,7 @@ public class Rainfrost : WildfrostMod
 
     public override string Title => "Rainfrost";
 
-    public override string Description =>
-        "Rainworld themed mod\n" +
-        "Made by Moondial, Sudux, KDeveloper, Code_Null, Lamb, AbsentAbigail";
+    public override string Description => GetDescription();
 
     public override TMP_SpriteAsset SpriteAsset => AssetSprites;
 
@@ -345,6 +343,29 @@ public class Rainfrost : WildfrostMod
         return _assets.OfType<T>().ToList();
     }
 
+    private static string GetDescription()
+    {
+        return MakeDescription(
+            "Rainworld themed mod",
+            "Made by Moondial, Sudux, KDeveloper, Code_Null, Lamb, AbsentAbigail",
+            "",
+            "Current Content:",
+            "21 Companions",
+            "1 Clunker",
+            "24+ Items",
+            "5 Charms",
+            "1 Status Effect",
+            "+ More to come",
+            "",
+            "Source code: https://github.com/AbsentAbigail/RainfrostMod"
+        );
+    }
+
+    private static string MakeDescription(params string[] lines)
+    {
+        return lines.Join(delimiter: "\n");
+    }
+    
     [HarmonyPatch(typeof(DebugLoggerTextWriter), "WriteLine")]
     private class PatchHarmony
     {

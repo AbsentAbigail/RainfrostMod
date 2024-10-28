@@ -10,7 +10,7 @@ internal class OnCardPlayedSummonNeuronFlyToDiscardPile() : AbstractApplyXStatus
     Name, "Add <{a}> {0} to <discard pile>",
     true, true,
     InstantSummonNeuronFlyToDiscardPile.Name,
-    subscribe: status => status.textInsert = CardHelper.CardTag(NeuronFly.Name)
+    subscribe: status => status.textInsert = AbstractCard.CardTag(NeuronFly.Name)
 )
 {
     public const string Name = "On Card Played Summon Neuron Fly To Discard Pile";

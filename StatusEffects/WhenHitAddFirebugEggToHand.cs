@@ -12,7 +12,7 @@ internal class WhenHitAddFirebugEggToHand() : AbstractStatus<StatusEffectApplyXO
     {
         return AbsentUtils.StatusCopy("When Hit Add Junk To Hand", Name)
             .WithText("When hit add <{a}> {0} to hand")
-            .WithTextInsert(CardHelper.CardTag(FirebugEgg.Name))
+            .WithTextInsert(AbstractCard.CardTag(FirebugEgg.Name))
             .SubscribeToAfterAllBuildEvent(data =>
                 ((StatusEffectApplyX)data).effectToApply =
                 AbsentUtils.GetStatus(InstantSummonFirebugEgg.Name)

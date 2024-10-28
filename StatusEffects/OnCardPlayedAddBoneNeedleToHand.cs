@@ -12,7 +12,7 @@ internal class OnCardPlayedAddBoneNeedleToHand() : AbstractStatus<StatusEffectAp
     {
         return AbsentUtils.StatusCopy("On Card Played Add Junk To Hand", Name)
             .WithText("Add <{a}> {0} to hand")
-            .WithTextInsert(CardHelper.CardTag(BoneNeedle.Name))
+            .WithTextInsert(AbstractCard.CardTag(BoneNeedle.Name))
             .SubscribeToAfterAllBuildEvent(data =>
                 ((StatusEffectApplyX)data).effectToApply =
                 AbsentUtils.GetStatus(InstantSummonBoneNeedle.Name)

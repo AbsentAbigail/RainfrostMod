@@ -12,7 +12,7 @@ internal class WhenDestroyedTransformSelfIntoHunterLongLegs() : AbstractApplyXSt
     {
         status.eventPriority = 99;
         status.targetMustBeAlive = false;
-        status.textInsert = CardHelper.CardTag(HunterLongLegs.Name);
+        status.textInsert = AbstractCard.CardTag(HunterLongLegs.Name);
     })
 {
     public const string Name = "When Destroyed Transform Self Into Hunter Long Legs Permanent";

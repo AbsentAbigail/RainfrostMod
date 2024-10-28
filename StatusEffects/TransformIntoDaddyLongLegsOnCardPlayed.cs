@@ -15,7 +15,7 @@ internal class TransformIntoDaddyLongLegsOnCardPlayed() : AbstractStatus<StatusE
 
         status.animation = fg.animation;
         status.nextPhase = AbsentUtils.GetCard(CardName);
-        status.textInsert = CardHelper.CardTag(CardName);
+        status.textInsert = AbstractCard.CardTag(CardName);
     })
 {
     public const string Name = "On Card Played Transform Into Daddy Long Legs";

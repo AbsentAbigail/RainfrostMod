@@ -23,11 +23,10 @@ internal class StatusEffectApplyXPreTurnIgnoreSilence : StatusEffectApplyXPreTur
         if (target.hp.current > 0 || target.FindStatus("Scrap")?.count > 0)
             return false;
 
-        if (!target.statusEffects.Any(t => t.type == "nextphase"))
+        if (target.statusEffects.All(t => t.type != "nextphase"))
             return false;
 
-        return ActionQueue.GetActions()
-            .Any(a => a as ActionChangePhase != null && (a as ActionChangePhase).entity == target);
+        return ActionQueue.GetActions().Any(a => a is ActionChangePhase phase && phase.entity == target);
     }
 
     private IEnumerator CheckTransformBoss(Hit hit)

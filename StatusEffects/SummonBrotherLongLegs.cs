@@ -13,7 +13,7 @@ internal class SummonBrotherLongLegs() : AbstractStatus<StatusEffectSummon>(Name
     {
         return AbsentUtils.StatusCopy("Summon Beepop", Name)
             .WithText("Deploy {0}")
-            .WithTextInsert(CardHelper.CardTag(cardName))
+            .WithTextInsert(AbstractCard.CardTag(cardName))
             .SubscribeToAfterAllBuildEvent(data =>
             {
                 var status = (StatusEffectSummon)data;

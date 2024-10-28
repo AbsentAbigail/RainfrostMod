@@ -16,7 +16,7 @@ internal class OnCardPlayedTransformIntoAttunedSaint() : AbstractStatus<StatusEf
         status.animation = fg.animation;
         status.nextPhase = AbsentUtils.GetCard(CardName);
         status.keepUpgrades = true;
-        status.textInsert = CardHelper.CardTag(CardName);
+        status.textInsert = AbstractCard.CardTag(CardName);
     })
 {
     public const string Name = "On Card Played Transforrm Into Attuned Saint";

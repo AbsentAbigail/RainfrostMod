@@ -12,7 +12,7 @@ internal class OnCardPlayedAddSingularityBombToHand() : AbstractStatus<StatusEff
     {
         return AbsentUtils.StatusCopy("On Card Played Add Junk To Hand", Name)
             .WithText("Add <{a}> {0} to hand")
-            .WithTextInsert(CardHelper.CardTag(SingularityBomb.Name))
+            .WithTextInsert(AbstractCard.CardTag(SingularityBomb.Name))
             .SubscribeToAfterAllBuildEvent(data =>
                 ((StatusEffectApplyX)data).effectToApply = AbsentUtils.GetStatus(InstantSummonSingularityBomb.Name)
             );

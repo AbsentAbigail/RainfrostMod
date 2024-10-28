@@ -12,7 +12,7 @@ internal class WhenHitAddEggbugEggToHand() : AbstractStatus<StatusEffectApplyXWh
     {
         return AbsentUtils.StatusCopy("When Hit Add Junk To Hand", Name)
             .WithText("When hit add <{a}> {0} to hand")
-            .WithTextInsert(CardHelper.CardTag(EggbugEgg.Name))
+            .WithTextInsert(AbstractCard.CardTag(EggbugEgg.Name))
             .SubscribeToAfterAllBuildEvent(data =>
                 ((StatusEffectApplyX)data).effectToApply =
                 AbsentUtils.GetStatus(InstantSummonEggbugEgg.Name)
