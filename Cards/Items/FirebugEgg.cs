@@ -1,20 +1,20 @@
-﻿using RainfrostMod.Helpers;
+﻿using AbsentUtilities;
 
-namespace RainfrostMod.Cards.Items
-{
-    internal class FirebugEgg() : AbstractItem(
-        Name, "Firebug Egg",
-        0, true,
-        pools: Pools.None,
-        subscribe: card =>
-        {
-            card.attackEffects = [Rainfrost.SStack("Overload", 3)];
-            card.traits = [
-                Rainfrost.TStack("Zoomlin"),
-                Rainfrost.TStack("Consume"),
-            ];
-        })
+namespace RainfrostMod.Cards.Items;
+
+internal class FirebugEgg() : AbstractItem(
+    Name, "Firebug Egg",
+    0, true,
+    Pools.None,
+    subscribe: card =>
     {
-        public const string Name = "FirebugEgg";
-    }
+        card.attackEffects = [AbsentUtils.SStack("Overload", 3)];
+        card.traits =
+        [
+            AbsentUtils.TStack("Zoomlin"),
+            AbsentUtils.TStack("Consume")
+        ];
+    })
+{
+    public const string Name = "FirebugEgg";
 }

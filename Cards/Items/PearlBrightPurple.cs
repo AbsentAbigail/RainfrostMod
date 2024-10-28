@@ -1,25 +1,25 @@
-﻿using Deadpan.Enums.Engine.Components.Modding;
-using RainfrostMod.Helpers;
+﻿using AbsentUtilities;
+using Deadpan.Enums.Engine.Components.Modding;
 using RainfrostMod.Traits;
 
-namespace RainfrostMod.Cards.Items
-{
-    internal class PearlBrightPurple() : AbstractItem(
-        Name, "Bright Purple Pearl",
-        0, true,
-        pools: Pools.None,
-        subscribe: data => data.traits = [
-            Rainfrost.TStack("Consume"),
-            Rainfrost.TStack("Zoomlin"),
-            Rainfrost.TStack(Pearl.Name)
-        ])
-    {
-        public const string Name = "BrightPurplePearl";
+namespace RainfrostMod.Cards.Items;
 
-        public override CardDataBuilder Builder()
-        {
-            return base.Builder()
-                .SetAttackEffect(Rainfrost.SStack("Demonize", 1));
-        }
+internal class PearlBrightPurple() : AbstractItem(
+    Name, "Bright Purple Pearl",
+    attack: 0, needsTarget: true,
+    pools: Pools.None,
+    subscribe: data => data.traits =
+    [
+        AbsentUtils.TStack("Consume"),
+        AbsentUtils.TStack("Zoomlin"),
+        AbsentUtils.TStack(Pearl.Name)
+    ])
+{
+    public const string Name = "BrightPurplePearl";
+
+    public override CardDataBuilder Builder()
+    {
+        return base.Builder()
+            .SetAttackEffect(AbsentUtils.SStack("Demonize"));
     }
 }

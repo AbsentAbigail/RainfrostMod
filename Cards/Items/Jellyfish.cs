@@ -1,16 +1,16 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Items
-{
-    internal class Jellyfish() : AbstractItem(
-        Name, "Jellyfish",
-        0, true,
-        subscribe: card =>
-        {
-            card.attackEffects = [Rainfrost.SStack(Zap.Name, 3)];
-            card.startWithEffects = [Rainfrost.SStack(OnCardPlayedIncreaseAttackEffectToSelf.Name, 1)];
-        })
+namespace RainfrostMod.Cards.Items;
+
+internal class Jellyfish() : AbstractItem(
+    Name, "Jellyfish",
+    0, true,
+    subscribe: card =>
     {
-        public const string Name = "Jellyfish";
-    }
+        card.attackEffects = [AbsentUtils.SStack(Zap.Name, 3)];
+        card.startWithEffects = [AbsentUtils.SStack(OnCardPlayedIncreaseAttackEffectToSelf.Name)];
+    })
+{
+    public const string Name = "Jellyfish";
 }

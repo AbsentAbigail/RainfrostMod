@@ -1,18 +1,15 @@
-﻿using RainfrostMod.Helpers;
+﻿using AbsentUtilities;
+using RainfrostMod.Keywords;
 using static StatusEffectApplyX;
 
-namespace RainfrostMod.StatusEffects
+namespace RainfrostMod.StatusEffects;
+
+internal class WhileActiveAddMultiHitToAllPearls() : AbstractApplyXStatus<StatusEffectWhileActiveX>(
+    Name, $"While active, add <x{{a}}><keyword=frenzy> to all {Pearl.Tag} cards",
+    true, true,
+    "MultiHit",
+    ApplyToFlags.Self | ApplyToFlags.Allies | ApplyToFlags.Enemies | ApplyToFlags.Hand,
+    status => { status.applyConstraints = [TargetConstraintHelper.HasTrait(Traits.Pearl.Name)]; })
 {
-    internal class WhileActiveAddMultiHitToAllPearls() : AbstractApplyXStatus<StatusEffectWhileActiveX>(
-        Name, $"While active, add <x{{a}}><keyword=frenzy> to all {Keywords.Pearl.Tag} cards",
-        true, true,
-        "MultiHit",
-        ApplyToFlags.Self | ApplyToFlags.Allies | ApplyToFlags.Enemies | ApplyToFlags.Hand,
-        status =>
-        {
-            status.applyConstraints = [TargetConstraintHelper.HasTrait(Traits.Pearl.Name)];
-        })
-    {
-        public const string Name = "While Active Add MultiHit To All Pearls";
-    }
+    public const string Name = "While Active Add MultiHit To All Pearls";
 }

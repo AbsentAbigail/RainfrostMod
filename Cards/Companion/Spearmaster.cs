@@ -1,24 +1,26 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Spearmaster() : AbstractUnit(
-        Name, "Spearmaster",
-        health: 6, counter: 4,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack(OnCardPlayedAddBoneNeedleToHand.Name, 2),
-            ];
+namespace RainfrostMod.Cards.Companion;
 
-            card.traits = [
-                Rainfrost.TStack(Slugcat.Name),
-            ];
-
-            card.greetMessages = ["... (They gesture that they want to join you.)"];
-        })
+internal class Spearmaster() : AbstractCompanion(
+    Name, "Spearmaster",
+    6, counter: 4,
+    subscribe: card =>
     {
-        public const string Name = "Spearmaster";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(OnCardPlayedAddBoneNeedleToHand.Name, 2)
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack(Slugcat.Name)
+        ];
+
+        card.greetMessages = ["... (They gesture that they want to join you.)"];
+    })
+{
+    public const string Name = "Spearmaster";
 }

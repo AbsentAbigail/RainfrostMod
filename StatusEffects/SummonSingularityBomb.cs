@@ -1,26 +1,24 @@
-﻿using Deadpan.Enums.Engine.Components.Modding;
-using RainfrostMod.Cards;
+﻿using AbsentUtilities;
+using Deadpan.Enums.Engine.Components.Modding;
 using RainfrostMod.Cards.Clunkers;
+using RainfrostMod.Cards.Items;
 
-namespace RainfrostMod.StatusEffects
+namespace RainfrostMod.StatusEffects;
+
+internal class SummonSingularityBomb() : AbstractStatus<StatusEffectSummon>(Name)
 {
-    internal class SummonSingularityBomb() : AbstractStatus<StatusEffectSummon>(Name)
-    {
-        public const string Name = "Summon Singularity Bomb";
-        public static string cardName = SingularityBomb.Name;
+    public const string Name = "Summon Singularity Bomb";
+    private const string CardName = SingularityBomb.Name;
 
-        public override StatusEffectDataBuilder Builder()
-        {
-            return Rainfrost.StatusCopy("Summon Beepop", Name)
-                .WithText("Deploy {0}")
-                .WithTextInsert(CardHelper.CardTag(cardName))
-                .SubscribeToAfterAllBuildEvent(data =>
-                {
-                    var status = data as StatusEffectSummon;
-                    status.summonCard = Rainfrost.TryGet<CardData>(cardName);
-                    status.gainTrait = null;
-                    status.setCardType = null;
-                });
-        }
+    public override StatusEffectDataBuilder Builder()
+    {
+        return AbsentUtils.StatusCopy("Summon Junk", Name)
+            .SubscribeToAfterAllBuildEvent(data =>
+            {
+                var status = (StatusEffectSummon)data;
+                status.summonCard = AbsentUtils.GetCard(CardName);
+                status.gainTrait = null;
+                status.setCardType = null;
+            });
     }
 }

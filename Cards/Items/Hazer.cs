@@ -1,21 +1,23 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Items
-{
-    internal class Hazer() : AbstractItem(
-        Name, "Hazer",
-        0, true,
-        subscribe: card =>
-        {
-            card.attackEffects = [
-                Rainfrost.SStack("Haze", 1),
-            ];
+namespace RainfrostMod.Cards.Items;
 
-            card.startWithEffects = [
-                Rainfrost.SStack(OnCardPlayedApplyNullToRandomAlly.Name, 4),
-            ];
-        })
+internal class Hazer() : AbstractItem(
+    Name, "Hazer",
+    0, true,
+    subscribe: card =>
     {
-        public const string Name = "Hazer";
-    }
+        card.attackEffects =
+        [
+            AbsentUtils.SStack("Haze")
+        ];
+
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(OnCardPlayedApplyNullToRandomAlly.Name, 4)
+        ];
+    })
+{
+    public const string Name = "Hazer";
 }

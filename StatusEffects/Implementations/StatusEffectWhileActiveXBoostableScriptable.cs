@@ -1,11 +1,10 @@
-﻿namespace RainfrostMod.StatusEffects.Implementations
+﻿namespace RainfrostMod.StatusEffects.Implementations;
+
+internal class StatusEffectWhileActiveXBoostableScriptable : StatusEffectWhileActiveX
 {
-    internal class StatusEffectWhileActiveXBoostableScriptable : StatusEffectWhileActiveX
+    public override int GetAmount(Entity entity, bool equalAmount = false, int equalTo = 0)
     {
-        public override int GetAmount(Entity entity, bool equalAmount = false, int equalTo = 0)
-        {
-            int i = scriptableAmount ? GetAmount() : 1;
-            return base.GetAmount(entity, equalAmount, equalTo) * i;
-        }
+        var i = scriptableAmount ? GetAmount() : 1;
+        return base.GetAmount(entity, equalAmount, equalTo) * i;
     }
 }

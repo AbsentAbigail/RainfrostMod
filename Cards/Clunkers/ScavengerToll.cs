@@ -1,18 +1,18 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Clunkers
-{
-    internal class ScavengerToll() : AbstractClunker(
-        Name, "Scavenger Toll",
-        1,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                .. card.startWithEffects,
-                Rainfrost.SStack(WhileActiveAddMultiHitToAllPearls.Name, 2),
-            ];
-        })
+namespace RainfrostMod.Cards.Clunkers;
+
+internal class ScavengerToll() : AbstractClunker(
+    Name, "Scavenger Toll",
+    subscribe: card =>
     {
-        public const string Name = "ScavengerToll";
-    }
+        card.startWithEffects =
+        [
+            .. card.startWithEffects,
+            AbsentUtils.SStack(WhileActiveAddMultiHitToAllPearls.Name, 2)
+        ];
+    })
+{
+    public const string Name = "ScavengerToll";
 }

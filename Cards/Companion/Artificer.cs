@@ -1,24 +1,26 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Artificer() : AbstractUnit(
-        Name, "Artificer",
-        6, 4, 4,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack(OnCardPlayedApplySpiceToCardsInHand.Name, 3),
-            ];
+namespace RainfrostMod.Cards.Companion;
 
-            card.traits = [
-                Rainfrost.TStack(Slugcat.Name)
-            ];
-
-            card.greetMessages = ["Wrr... Wawa? (They suppose they'll join.)"];
-        })
+internal class Artificer() : AbstractCompanion(
+    Name, "Artificer",
+    6, 4, 4,
+    subscribe: card =>
     {
-        public const string Name = "Artificer";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(OnCardPlayedApplySpiceToCardsInHand.Name, 3)
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack(Slugcat.Name)
+        ];
+
+        card.greetMessages = ["Wrr... Wawa? (They suppose they'll join.)"];
+    })
+{
+    public const string Name = "Artificer";
 }

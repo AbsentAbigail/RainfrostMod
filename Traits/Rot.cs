@@ -1,11 +1,11 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Traits
+namespace RainfrostMod.Traits;
+
+public class Rot() : AbstractTrait(Name, Keywords.Rot.Name,
+    effects: OnCardPlayedTriggerAgainstNonRotAlliesInRow.Name
+)
 {
-    public class Rot() : AbstractTrait(Name, Keywords.Rot.Name, 
-        effects: OnCardPlayedTriggerAgainstNonRotAlliesInRow.Name
-        )
-    {
-        public const string Name = "Rot";
-    }
+    public const string Name = "Rot";
 }

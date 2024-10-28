@@ -1,10 +1,9 @@
-﻿using RainfrostMod.Helpers;
+﻿using AbsentUtilities;
 
-namespace RainfrostMod.Keywords
+namespace RainfrostMod.Keywords;
+
+internal class Iterator() : AbstractKeyword(Name, "Iterator", "A card category|Does nothing by itself")
 {
-    internal class Iterator() : AbstractKeyword(Name, "Iterator", "A card category|Does nothing by itself")
-    {
-        public const string Name = "iterator";
-        public static string Tag = KeywordHelper.Tag(Name);
-    }
+    public const string Name = "iterator";
+    public static readonly string Tag = GetTag(Name);
 }

@@ -1,13 +1,15 @@
-﻿namespace RainfrostMod.Cards.Items
-{
-    internal class Rock() : AbstractItem(
-        Name, "Rock",
-        1, true,
-        subscribe: card => {
-            card.attackEffects = [Rainfrost.SStack("Snow", 1)];
-            card.traits = [Rainfrost.TStack("Noomlin")];
-        })
+﻿using AbsentUtilities;
+
+namespace RainfrostMod.Cards.Items;
+
+internal class Rock() : AbstractItem(
+    Name, "Rock",
+    1, true,
+    subscribe: card =>
     {
-        public const string Name = "Rock";
-    }
+        card.attackEffects = [AbsentUtils.SStack("Snow")];
+        card.traits = [AbsentUtils.TStack("Noomlin")];
+    })
+{
+    public const string Name = "Rock";
 }

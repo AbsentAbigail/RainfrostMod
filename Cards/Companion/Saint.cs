@@ -1,26 +1,28 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Saint() : AbstractUnit(
-        Name, "Saint",
-        health: 2, counter: 2,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack(OnCardPlayedTransformIntoAttunedSaint.Name, 10),
-                Rainfrost.SStack("ImmuneToSnow"),
-            ];
+namespace RainfrostMod.Cards.Companion;
 
-            card.traits = [
-                Rainfrost.TStack(Slugcat.Name),
-                Rainfrost.TStack("Fragile")
-            ];
-
-            card.greetMessages = ["...? (They stare at you. Maybe they want to join?)"];
-        })
+internal class Saint() : AbstractCompanion(
+    Name, "Saint",
+    2, counter: 2,
+    subscribe: card =>
     {
-        public const string Name = "Saint";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(OnCardPlayedTransformIntoAttunedSaint.Name, 10),
+            AbsentUtils.SStack("ImmuneToSnow")
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack(Slugcat.Name),
+            AbsentUtils.TStack("Fragile")
+        ];
+
+        card.greetMessages = ["...? (They stare at you. Maybe they want to join?)"];
+    })
+{
+    public const string Name = "Saint";
 }

@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using AbsentUtilities;
 using Deadpan.Enums.Engine.Components.Modding;
 using HarmonyLib;
+using JetBrains.Annotations;
 using RainfrostMod.Cards.Clunkers;
 using RainfrostMod.Cards.Companion;
 using RainfrostMod.Cards.Items;
 using RainfrostMod.CardUpgrades;
-using RainfrostMod.Helpers;
 using RainfrostMod.Keywords;
 using RainfrostMod.StatusEffects;
 using TMPro;
@@ -18,60 +18,64 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.AddressableAssets.ResourceLocators;
 using UnityEngine.U2D;
 using WildfrostHopeMod.Utils;
-using Extensions = Deadpan.Enums.Engine.Components.Modding.Extensions;
 using Logger = HarmonyLib.Tools.Logger;
-using LogHelper = RainfrostMod.Helpers.LogHelper;
-using Object = UnityEngine.Object;
-using SingularityBomb = RainfrostMod.Keywords.SingularityBomb;
+using SingularityBomb = RainfrostMod.Cards.Items.SingularityBomb;
 using Zap = RainfrostMod.Keywords.Zap;
 
 namespace RainfrostMod;
 
+[UsedImplicitly]
 public class Rainfrost : WildfrostMod
 {
-    public static Rainfrost Instance;
+    private static SpriteAtlas _cards;
+    private static string _modDirectory;
+    private List<object> _assets;
+    private bool _loaded;
 
-    public static SpriteAtlas Cards;
-
+    [UsedImplicitly]
     [ConfigItem(true, "Replace some wiki sprites with drawn art (Requires restart to work)", "Enable alternate art")]
-    public bool altArt;
-
-    private List<object> assets;
+    public bool AltArt;
 
     //this is here to allow our icon to appear in the text box of cards
-    public TMP_SpriteAsset assetSprites;
-    private bool loaded;
+    public TMP_SpriteAsset AssetSprites;
 
     public Rainfrost(string directory) : base(directory)
     {
-        AbsentUtils.Mod = this;
-        AbsentUtils.Prefix = "Rainfrost";
-        Instance = this;
+        _modDirectory = ModDirectory;
+
         HarmonyInstance.PatchAll(typeof(PatchHarmony));
     }
 
     public override string GUID => "absentabigail.wildfrost.rainfrost";
 
-    public override string[] Depends => ["hope.wildfrost.vfx"];
+    public override string[] Depends => ["hope.wildfrost.vfx", "absentabigail.wildfrost.absentutils"];
 
     public override string Title => "Rainfrost";
 
     public override string Description =>
-        "Rainworld themed mod\nMade by Moondial, Sudux, KDeveloper, Code_Null, Lamb, AbsentAbigail";
+        "Rainworld themed mod\n" +
+        "Made by Moondial, Sudux, KDeveloper, Code_Null, Lamb, AbsentAbigail";
 
-    public override TMP_SpriteAsset SpriteAsset => assetSprites;
+    public override TMP_SpriteAsset SpriteAsset => AssetSprites;
 
-    public static string CatalogFolder => Path.Combine(Instance.ModDirectory, "Windows");
+    public static string CatalogFolder => Path.Combine(_modDirectory, "Windows");
     public static string CatalogPath => Path.Combine(CatalogFolder, "catalog.json");
 
     public override void Load()
     {
-        if (!loaded) CreateModAssets();
+        AbsentUtils.AddModInfo(new AbsentUtils.ModInfo
+        {
+            Mod = this,
+            Prefix = "Rainfrost",
+            HasAltArt = AltArt
+        });
+
+        if (!_loaded) CreateModAssets();
         base.Load();
 
         //needed for custom icons
-        var ftext = GameObject.FindObjectOfType<FloatingText>(true);
-        ftext.textAsset.spriteAsset.fallbackSpriteAssets.Add(assetSprites);
+        var floatingText = Object.FindObjectOfType<FloatingText>(true);
+        floatingText.textAsset.spriteAsset.fallbackSpriteAssets.Add(AssetSprites);
     }
 
     public override void Unload()
@@ -80,29 +84,30 @@ public class Rainfrost : WildfrostMod
         base.Unload();
     }
 
-    public void CreateModAssets()
+    private void CreateModAssets()
     {
         if (!Addressables.ResourceLocators.Any(r => r is ResourceLocationMap map && map.LocatorId == CatalogPath))
             Addressables.LoadContentCatalogAsync(CatalogPath).WaitForCompletion();
 
-        Cards = (SpriteAtlas)Addressables.LoadAssetAsync<Object>($"Assets/{GUID}/Cards.spriteatlas")
+        _cards = (SpriteAtlas)Addressables.LoadAssetAsync<Object>($"Assets/{GUID}/Cards.spriteatlas")
             .WaitForCompletion();
-        if (Cards == null)
-            throw new Exception("Sprite Assets not found");
-        AbsentUtils.Sprites = Cards;
+        AbsentUtils.GetModInfo(Assembly.GetExecutingAssembly()).SetSprites(_cards);
 
-        //Needed to get sprites in text boxes
-        assetSprites =
-            HopeUtils.CreateSpriteAsset("assetSprites", ImagePath("Sprites"), [], [ImagePath("zap.png").ToSprite()]);
+        var modInfo = AbsentUtils.GetModInfo(Assembly.GetExecutingAssembly());
+        Debug.Log("Bundle sprite count: " + modInfo.Sprites?.spriteCount);
+
+        AssetSprites = HopeUtils.CreateSpriteAsset("RainfrostAssets", ImagePath(""));
 
         Zap.Data();
 
-        //make sure you icon is in both the images folder and the sprites subfolder
-        StatusIconHelper.CreateIcon("zap", Cards.GetSprite("zap"), "zap", "ink", Color.black,
-                [TryGet<KeywordData>(Zap.Name)])
+        StatusIconHelper.CreateIcon(
+                "zap",
+                _cards?.GetSprite("zap") ?? ImagePath("zap.png").ToSprite(),
+                "zap", -1, "ink", Color.black,
+                [AbsentUtils.GetKeyword(Zap.Name)])
             .GetComponentInChildren<TextMeshProUGUI>(true).enabled = true;
 
-        assets =
+        _assets =
         [
             /*
              * Status Effects
@@ -151,7 +156,8 @@ public class Rainfrost : WildfrostMod
             new OnCardPlayedTransformIntoAttunedSaint().Builder(),
 
             new SummonSingularityBomb().Builder(),
-            new WhenScrapLostDamageAlliesInRowAndEnemiesInRow().Builder(),
+            new InstantSummonSingularityBomb().Builder(),
+            new OnCardPlayedAddSingularityBombToHand().Builder(),
 
             new WhileActiveAddMultiHitToAlliedSlugcats().Builder(),
 
@@ -196,7 +202,7 @@ public class Rainfrost : WildfrostMod
             new Rot().Builder(),
             new Slugcat().Builder(),
 
-            new SingularityBomb().Builder(),
+            new Nuke().Builder(),
 
             /*
              * Traits
@@ -205,6 +211,8 @@ public class Rainfrost : WildfrostMod
             new Traits.Pearl().Builder(),
             new Traits.Rot().Builder(),
             new Traits.Slugcat().Builder(),
+
+            new Traits.Nuke().Builder(),
 
             /*
              * Cards (Companions)
@@ -248,7 +256,6 @@ public class Rainfrost : WildfrostMod
 
             new SevenRedSuns().Builder(),
 
-            new Centipede().Builder(),
             new Overseer().Builder(),
 
             new Inspector().Builder(),
@@ -259,7 +266,6 @@ public class Rainfrost : WildfrostMod
             /*
              * Cards (Clunker)
              */
-            new Cards.Clunkers.SingularityBomb().Builder(),
 
             new ScavengerToll().Builder(),
 
@@ -306,6 +312,8 @@ public class Rainfrost : WildfrostMod
             new Flashbang().Builder(),
             new Hazer().Builder(),
 
+            new SingularityBomb().Builder(),
+
             /*
              * Card Upgrades
              */
@@ -316,87 +324,31 @@ public class Rainfrost : WildfrostMod
             new CardUpgradeBattery().Builder()
         ];
 
-        loaded = true;
+        _loaded = true;
     }
 
     public void UnloadFromClasses()
     {
         var tribes = AddressableLoader.GetGroup<ClassData>("ClassData");
-        foreach (var tribe in tribes)
-        {
-            if (tribe == null || tribe.rewardPools == null)
-                continue;
-
-            foreach (var pool in tribe.rewardPools)
-            {
-                if (pool == null)
-                    continue;
-
-                pool.list.RemoveAllWhere(item => item == null || item.ModAdded == this);
-            }
-        }
+        foreach (var pool in from tribe in tribes
+                 where tribe != null && tribe.rewardPools != null
+                 from pool in tribe.rewardPools
+                 where pool != null
+                 select pool)
+            pool.list.RemoveAllWhere(item => item == null || item.ModAdded == this);
     }
 
-    public override List<T> AddAssets<T, Y>()
+    public override List<T> AddAssets<T, TY>()
     {
-        if (assets.OfType<T>().Any())
-            LogHelper.Log($"Adding {typeof(Y).Name}s: {assets.OfType<T>().Select(a => a._data.name).Join()}");
-        return assets.OfType<T>().ToList();
-    }
-
-    public static T TryGet<T>(string name) where T : DataFile
-    {
-        T data;
-        if (typeof(StatusEffectData).IsAssignableFrom(typeof(T)))
-            data = Instance.Get<StatusEffectData>(name) as T;
-        else
-            data = Instance.Get<T>(name);
-
-        if (data == null)
-            throw new Exception(
-                $"TryGet Error: Could not find a [{typeof(T).Name}] with the name [{name}] or [{Extensions.PrefixGUID(name, Instance)}]");
-
-        return data;
-    }
-
-    public static T TryGetOrNull<T>(string name) where T : DataFile
-    {
-        T data;
-        if (typeof(StatusEffectData).IsAssignableFrom(typeof(T)))
-            data = Instance.Get<StatusEffectData>(name) as T;
-        else
-            data = Instance.Get<T>(name);
-
-        return data;
-    }
-
-    public static T GetStatus<T>(string name) where T : StatusEffectData
-    {
-        return Instance.GetStatusEffect<T>(name);
-    }
-
-    public static CardData.StatusEffectStacks SStack(string name, int amount = 1)
-    {
-        return new CardData.StatusEffectStacks(TryGet<StatusEffectData>(name), amount);
-    }
-
-    public static CardData.TraitStacks TStack(string name, int amount = 1)
-    {
-        return new CardData.TraitStacks(TryGet<TraitData>(name), amount);
-    }
-
-    public static StatusEffectDataBuilder StatusCopy(string oldName, string newName)
-    {
-        var data = TryGet<StatusEffectData>(oldName).InstantiateKeepName();
-        data.name = Instance.GUID + "." + newName;
-        var builder = data.Edit<StatusEffectData, StatusEffectDataBuilder>();
-        builder.Mod = Instance;
-        return builder;
+        if (_assets.OfType<T>().Any())
+            LogHelper.Log($"Adding {typeof(TY).Name}s: {_assets.OfType<T>().Select(a => a._data.name).Join()}");
+        return _assets.OfType<T>().ToList();
     }
 
     [HarmonyPatch(typeof(DebugLoggerTextWriter), "WriteLine")]
     private class PatchHarmony
     {
+        [UsedImplicitly]
         private static bool Prefix()
         {
             Postfix();

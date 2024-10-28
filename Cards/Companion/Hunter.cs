@@ -1,25 +1,28 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
+using RainfrostMod.Traits;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Hunter() : AbstractUnit(
-        Name, "Hunter",
-        6, 4, 3,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack(WhenDestroyedTransformSelfIntoHunterLongLegs.Name),
-                Rainfrost.SStack("MultiHit", 1)
-            ];
+namespace RainfrostMod.Cards.Companion;
 
-            card.traits = [
-                Rainfrost.TStack(Traits.Slugcat.Name),
-            ];
-
-            card.greetMessages = ["Wawa... Wa? (They are thinking about joining you.)"];
-        },
-        altSprite:true)
+internal class Hunter() : AbstractCompanion(
+    Name, "Hunter",
+    6, 4, 3,
+    subscribe: card =>
     {
-        public const string Name = "Hunter";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(WhenDestroyedTransformSelfIntoHunterLongLegs.Name),
+            AbsentUtils.SStack("MultiHit")
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack(Slugcat.Name)
+        ];
+
+        card.greetMessages = ["Wawa... Wa? (They are thinking about joining you.)"];
+    },
+    altSprite: true)
+{
+    public const string Name = "Hunter";
 }

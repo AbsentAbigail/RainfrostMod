@@ -1,20 +1,20 @@
-﻿using RainfrostMod.Helpers;
-using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.Keywords;
 
-namespace RainfrostMod.CardUpgrades
-{
-    internal class CardUpgradeZap() : AbstractCardUpgrade(
-        Name, "Zap Charm",
-        $"Apply <1><keyword={Keywords.Zap.Name}>",
-        subscribe: charm =>
-        {
-            charm.attackEffects = [Rainfrost.SStack(Zap.Name, 1)];
-            charm.targetConstraints = [
-                TargetConstraintHelper.ApplyCharmConstraint(),
-            ];
-            charm.becomesTargetedCard = true;
-        })
+namespace RainfrostMod.CardUpgrades;
+
+internal class CardUpgradeZap() : AbstractCardUpgrade(
+    Name, "Zap Charm",
+    $"Apply <1><keyword={Zap.Name}>",
+    subscribe: charm =>
     {
-        public const string Name = "CardUpgradeZap";
-    }
+        charm.attackEffects = [AbsentUtils.SStack(StatusEffects.Zap.Name)];
+        charm.targetConstraints =
+        [
+            TargetConstraintHelper.ApplyCharmConstraint()
+        ];
+        charm.becomesTargetedCard = true;
+    })
+{
+    public const string Name = "CardUpgradeZap";
 }

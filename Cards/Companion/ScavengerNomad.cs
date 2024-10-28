@@ -1,15 +1,17 @@
-﻿namespace RainfrostMod.Cards.Companion
-{
-    internal class ScavengerNomad() : AbstractUnit(
-        Name, "Scavenger Nomad",
-        7, 4, 4,
-        subscribe: card =>
-        {
-            card.traits = [
-                Rainfrost.TStack("Draw", 2),
-            ];
-        })
+﻿using AbsentUtilities;
+
+namespace RainfrostMod.Cards.Companion;
+
+internal class ScavengerNomad() : AbstractCompanion(
+    Name, "Scavenger Nomad",
+    7, 4, 4,
+    subscribe: card =>
     {
-        public const string Name = "ScavengerNomad";
-    }
+        card.traits =
+        [
+            AbsentUtils.TStack("Draw", 2)
+        ];
+    })
+{
+    public const string Name = "ScavengerNomad";
 }

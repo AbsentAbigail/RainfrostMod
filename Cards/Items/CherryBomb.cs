@@ -1,16 +1,15 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Items
-{
-    internal class CherryBomb() : AbstractItem(
-        Name, "Cherry Bomb",
-        null,
-        subscribe: card =>
-        {
-            card.startWithEffects = [Rainfrost.SStack(OnCardPlayedAddExplodeToAllAllies.Name, 3)];
-            card.traits = [Rainfrost.TStack("Consume")];
-        })
+namespace RainfrostMod.Cards.Items;
+
+internal class CherryBomb() : AbstractItem(
+    Name, "Cherry Bomb",
+    subscribe: card =>
     {
-        public const string Name = "CherryBomb";
-    }
+        card.startWithEffects = [AbsentUtils.SStack(OnCardPlayedAddExplodeToAllAllies.Name, 3)];
+        card.traits = [AbsentUtils.TStack("Consume")];
+    })
+{
+    public const string Name = "CherryBomb";
 }

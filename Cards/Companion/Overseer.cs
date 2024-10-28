@@ -1,18 +1,18 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Overseer() : AbstractUnit(
-        Name, "Overseer",
-        1, 0, 2,
-        subscribe: card =>
-        {
-            card.attackEffects = [Rainfrost.SStack(Zap.Name, 1)];
-            card.startWithEffects = [Rainfrost.SStack(WhileActiveGainMultiHitForEachActiveIterators.Name, 1)];
-            card.traits = [Rainfrost.TStack("Fragile")];
-            card.greetMessages = ["[ (+ +)/ ] (It projects a friendly picture. Let it join?)"];
-        })
+namespace RainfrostMod.Cards.Companion;
+
+internal class Overseer() : AbstractCompanion(
+    Name, "Overseer",
+    1, 0, 2,
+    subscribe: card =>
     {
-        public const string Name = "Overseer";
-    }
+        card.attackEffects = [AbsentUtils.SStack(Zap.Name)];
+        card.startWithEffects = [AbsentUtils.SStack(WhileActiveGainMultiHitForEachActiveIterators.Name)];
+        card.traits = [AbsentUtils.TStack("Fragile")];
+        card.greetMessages = ["[ (+ +)/ ] (It projects a friendly picture. Let it join?)"];
+    })
+{
+    public const string Name = "Overseer";
 }

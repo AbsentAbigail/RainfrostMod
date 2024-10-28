@@ -1,20 +1,20 @@
-﻿using RainfrostMod.Helpers;
+﻿using AbsentUtilities;
 using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Items
-{
-    internal class RedCentipedeScale() : AbstractItem(
-        Name, "Red Centipede Scale",
-        0, true,
-        Pools.Snowdweller,
-        subscribe: card =>
-        {
-            card.attackEffects = [
-                Rainfrost.SStack(Zap.Name, 1),
-                Rainfrost.SStack("Shell", 6),
-            ];
-        })
+namespace RainfrostMod.Cards.Items;
+
+internal class RedCentipedeScale() : AbstractItem(
+    Name, "Red Centipede Scale",
+    0, true,
+    Pools.Snowdweller,
+    subscribe: card =>
     {
-        public const string Name = "RedCentipedeScale";
-    }
+        card.attackEffects =
+        [
+            AbsentUtils.SStack(Zap.Name),
+            AbsentUtils.SStack("Shell", 6)
+        ];
+    })
+{
+    public const string Name = "RedCentipedeScale";
 }

@@ -1,21 +1,25 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Eggbug() : AbstractUnit(
-        Name, "Eggbug",
-        health: 4,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack(WhenHitAddEggbugEggToHand.Name, 2),
-            ];
+namespace RainfrostMod.Cards.Companion;
 
-            card.traits = [
-                Rainfrost.TStack("Fragile"),
-            ];
-        })
+internal class Eggbug() : AbstractCompanion(
+    Name, "Eggbug",
+    4,
+    subscribe: card =>
     {
-        public const string Name = "Eggbug";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(WhenHitAddEggbugEggToHand.Name, 2)
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack("Fragile")
+        ];
+        
+        card.greetMessages = ["*pitter patter*"];
+    })
+{
+    public const string Name = "Eggbug";
 }

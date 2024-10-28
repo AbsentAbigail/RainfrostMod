@@ -1,21 +1,23 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Items
-{
-    internal class BoneNeedle() : AbstractItem(
-        Name, "Bone Needle",
-        2, true,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack(OnCardPlayedIncreaseHealthToRandomAlly.Name, 1),
-            ];
+namespace RainfrostMod.Cards.Items;
 
-            card.traits = [
-                Rainfrost.TStack("Noomlin"),
-            ];
-        })
+internal class BoneNeedle() : AbstractItem(
+    Name, "Bone Needle",
+    2, true,
+    subscribe: card =>
     {
-        public const string Name = "BoneNeedle";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(OnCardPlayedIncreaseHealthToRandomAlly.Name)
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack("Noomlin")
+        ];
+    })
+{
+    public const string Name = "BoneNeedle";
 }

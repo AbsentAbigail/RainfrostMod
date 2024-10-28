@@ -1,16 +1,20 @@
-﻿using RainfrostMod.Helpers;
+﻿using System.Reflection;
+using AbsentUtilities;
 using UnityEngine;
+using static AbsentUtilities.StatusIconHelper;
 
-namespace RainfrostMod.Keywords
+namespace RainfrostMod.Keywords;
+
+internal class Zap
 {
-    internal class Zap()
-    {
-        public static string Name = $"{Rainfrost.Instance.GUID}.zap";
+    public static string Name = $"{AbsentUtils.GetModInfo(Assembly.GetExecutingAssembly()).Mod.GUID}.zap";
+    private static readonly Color Color = AbstractKeyword.Color(253, 195, 97);
 
-        public static KeywordData Data()
-        {
-            return StatusIconHelper.CreateIconKeyword(Name, "Zap", "Before attacking, take damage|Does not count down!", "zap",
-                new Color(1f, 1f, 1f), new Color(0.627f, 0.125f, 0.941f), new Color(0f, 0f, 0f));
-        }
+    public static KeywordData Data()
+    {
+        return CreateIconKeyword(Name, "Zap", "Before attacking, take damage|Does not count down!",
+            "zap",
+            Color, new Color(1f, 1f, 1f), Color,
+            new Color(0f, 0f, 0f));
     }
 }

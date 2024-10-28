@@ -1,28 +1,22 @@
-﻿using Deadpan.Enums.Engine.Components.Modding;
-using RainfrostMod.Cards;
+﻿using AbsentUtilities;
+using Deadpan.Enums.Engine.Components.Modding;
 using RainfrostMod.Cards.Companion;
 using RainfrostMod.StatusEffects.Implementations;
 
-namespace RainfrostMod.StatusEffects
-{
-    internal class TransformIntoMotherLongLegsOnCardPlayed() : AbstractStatus<StatusEffectTransformOnCardPlayed>(
-        Name,
-        "Become {0}",
-        subscribe: data =>
-        {
-            var fg = Rainfrost.GetStatus<StatusEffectNextPhase>("FinalBossPhase2");
+namespace RainfrostMod.StatusEffects;
 
-            data.animation = fg.animation;
-            data.nextPhase = Rainfrost.TryGet<CardData>(cardName);
-        })
+internal class TransformIntoMotherLongLegsOnCardPlayed() : AbstractStatus<StatusEffectTransformOnCardPlayed>(
+    Name,
+    "Become {0}",
+    subscribe: status =>
     {
-        public const string Name = "On Card Played Transform Into Mother Long Legs";
-        public static string cardName = MotherLongLegs.Name;
+        var fg = AbsentUtils.GetStatusOf<StatusEffectNextPhase>("FinalBossPhase2");
 
-        public override StatusEffectDataBuilder Builder()
-        {
-            return base.Builder()
-                .WithTextInsert(CardHelper.CardTag(cardName));
-        }
-    }
+        status.animation = fg.animation;
+        status.nextPhase = AbsentUtils.GetCard(CardName);
+        status.textInsert = CardHelper.CardTag(CardName);
+    })
+{
+    public const string Name = "On Card Played Transform Into Mother Long Legs";
+    private const string CardName = MotherLongLegs.Name;
 }

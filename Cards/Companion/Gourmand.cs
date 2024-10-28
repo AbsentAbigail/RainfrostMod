@@ -1,25 +1,27 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Gourmand() : AbstractUnit(
-        Name, "Gourmand",
-        8, 6, 5,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack(OnCardPlayedSummonCopyOfLeftmostCardInHand.Name),
-            ];
+namespace RainfrostMod.Cards.Companion;
 
-            card.traits = [
-                Rainfrost.TStack(Slugcat.Name),
-            ];
-
-            card.greetMessages = ["Wa, wawa. (It seems they want to tag along.)"];
-        },
-        altSprite: true)
+internal class Gourmand() : AbstractCompanion(
+    Name, "Gourmand",
+    8, 6, 5,
+    subscribe: card =>
     {
-        public const string Name = "Gourmand";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(OnCardPlayedSummonCopyOfLeftmostCardInHand.Name)
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack(Slugcat.Name)
+        ];
+
+        card.greetMessages = ["Wa, wawa. (It seems they want to tag along.)"];
+    },
+    altSprite: true)
+{
+    public const string Name = "Gourmand";
 }

@@ -1,24 +1,27 @@
-﻿using RainfrostMod.Helpers;
+﻿using AbsentUtilities;
 using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Firebug() : AbstractUnit(
-        Name, "Firebug",
-        health: 2,
-        pools: Pools.Shademancer,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack("Block", 1),
-                Rainfrost.SStack(WhenHitAddFirebugEggToHand.Name, 2),
-            ];
+namespace RainfrostMod.Cards.Companion;
 
-            card.traits = [
-                Rainfrost.TStack("Fragile"),
-            ];
-        })
+internal class Firebug() : AbstractCompanion(
+    Name, "Firebug",
+    2,
+    pools: Pools.Shademancer,
+    subscribe: card =>
     {
-        public const string Name = "Firebug";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack("Block"),
+            AbsentUtils.SStack(WhenHitAddFirebugEggToHand.Name, 2)
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack("Fragile")
+        ];
+        
+        card.greetMessages = ["*pitter patter*"];
+    })
+{
+    public const string Name = "Firebug";
 }

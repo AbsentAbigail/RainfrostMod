@@ -1,22 +1,23 @@
-﻿using RainfrostMod.Helpers;
+﻿using AbsentUtilities;
 using RainfrostMod.StatusEffects;
 
-namespace RainfrostMod.Cards.Items
-{
-    internal class Flashbang() : AbstractItem(
-        Name, "Flashbang",
-        0, true,
-        subscribe: card =>
-        {
-            card.attackEffects = [
-                Rainfrost.SStack(Zap.Name, 3),
-            ];
+namespace RainfrostMod.Cards.Items;
 
-            card.traits = [
-                Rainfrost.TStack("Barrage"),
-            ];
-        })
+internal class Flashbang() : AbstractItem(
+    Name, "Flashbang",
+    0, true,
+    subscribe: card =>
     {
-        public const string Name = "Flashbang";
-    }
+        card.attackEffects =
+        [
+            AbsentUtils.SStack(Zap.Name, 3)
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack("Barrage")
+        ];
+    })
+{
+    public const string Name = "Flashbang";
 }

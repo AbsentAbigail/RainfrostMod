@@ -1,12 +1,11 @@
-﻿using RainfrostMod.StatusEffects.Implementations;
+﻿using AbsentUtilities;
 
-namespace RainfrostMod.StatusEffects
+namespace RainfrostMod.StatusEffects;
+
+internal class Kill() : AbstractStatus<StatusEffectInstantKill>(
+    Name, "Kill",
+    true
+)
 {
-    internal class Kill() : AbstractStatus<StatusEffectInstantKill>(
-        Name, "Kill",
-        true
-        )
-    {
-        public const string Name = "Kill";
-    }
+    public const string Name = "Kill";
 }

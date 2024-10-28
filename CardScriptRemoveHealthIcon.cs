@@ -1,10 +1,9 @@
-﻿namespace RainfrostMod
+﻿namespace RainfrostMod;
+
+internal class CardScriptRemoveHealthIcon : CardScript
 {
-    internal class CardScriptRemoveHealthIcon : CardScript
+    public override void Run(CardData target)
     {
-        public override void Run(CardData target)
-        {
-            target.hasHealth = false;
-        }
+        target.hasHealth = false;
     }
 }

@@ -1,7 +1,8 @@
-﻿namespace RainfrostMod.Traits
+﻿using AbsentUtilities;
+
+namespace RainfrostMod.Traits;
+
+public class Iterator() : AbstractTrait(Name, Keywords.Iterator.Name)
 {
-    public class Iterator() : AbstractTrait(Name, Keywords.Iterator.Name)
-    {
-        public const string Name = "Iterator";
-    }
+    public const string Name = "Iterator";
 }

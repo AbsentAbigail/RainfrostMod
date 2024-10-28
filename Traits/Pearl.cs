@@ -1,7 +1,8 @@
-﻿namespace RainfrostMod.Traits
+﻿using AbsentUtilities;
+
+namespace RainfrostMod.Traits;
+
+public class Pearl() : AbstractTrait(Name, Keywords.Pearl.Name)
 {
-    public class Pearl() : AbstractTrait(Name, Keywords.Pearl.Name)
-    {
-        public const string Name = "Pearl";
-    }
+    public const string Name = "Pearl";
 }

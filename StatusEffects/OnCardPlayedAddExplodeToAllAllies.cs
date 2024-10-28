@@ -1,13 +1,13 @@
-﻿using static StatusEffectApplyX;
+﻿using AbsentUtilities;
+using static StatusEffectApplyX;
 
-namespace RainfrostMod.StatusEffects
+namespace RainfrostMod.StatusEffects;
+
+internal class OnCardPlayedAddExplodeToAllAllies() : AbstractApplyXStatus<StatusEffectApplyXOnCardPlayed>(
+    Name, "Add Explode <{a}> to all allies",
+    true, true,
+    InstantGainExplode.Name,
+    ApplyToFlags.Allies)
 {
-    internal class OnCardPlayedAddExplodeToAllAllies() : AbstractApplyXStatus<StatusEffectApplyXOnCardPlayed>(
-        Name, "Add Explode <{a}> to all allies",
-        true, true,
-        InstantGainExplode.Name,
-        ApplyToFlags.Allies)
-    {
-        public const string Name = "On Card Played Add Explode To All Allies";
-    }
+    public const string Name = "On Card Played Add Explode To All Allies";
 }

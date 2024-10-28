@@ -1,22 +1,24 @@
-﻿using Deadpan.Enums.Engine.Components.Modding;
+﻿using AbsentUtilities;
+using Deadpan.Enums.Engine.Components.Modding;
+using RainfrostMod.Traits;
 
-namespace RainfrostMod.Cards.Items
+namespace RainfrostMod.Cards.Items;
+
+public class PearlDeepPink() : AbstractItem(
+    Name, "Deep Pink Pearl",
+    needsTarget: true,
+    subscribe: data => data.traits =
+    [
+        AbsentUtils.TStack("Zoomlin"),
+        AbsentUtils.TStack("Consume"),
+        AbsentUtils.TStack(Pearl.Name)
+    ])
 {
-    public class PearlDeepPink() : AbstractItem(
-        Name, "Deep Pink Pearl",
-        0, true,
-        subscribe: data => data.traits = [
-                Rainfrost.TStack("Zoomlin"),
-                Rainfrost.TStack("Consume"),
-                Rainfrost.TStack(Traits.Pearl.Name)
-            ])
-    {
-        public const string Name = "DeepPinkPearl";
+    public const string Name = "DeepPinkPearl";
 
-        public override CardDataBuilder Builder()
-        {
-            return base.Builder()
-                .SetAttackEffect(Rainfrost.SStack("Increase Max Health", 4));
-        }
+    public override CardDataBuilder Builder()
+    {
+        return base.Builder()
+            .SetAttackEffect(AbsentUtils.SStack("Increase Max Health", 4));
     }
 }

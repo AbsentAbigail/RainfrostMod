@@ -1,27 +1,21 @@
 ﻿using System.Collections;
 
-namespace RainfrostMod.StatusEffects.Implementations
+namespace RainfrostMod.StatusEffects.Implementations;
+
+internal class StatusEffectWhenAnyCardDestroyedApplyX : StatusEffectApplyXWhenDestroyed
 {
-    internal class StatusEffectWhenAnyCardDestroyedApplyX : StatusEffectApplyXWhenDestroyed
+    public override void Init()
     {
-        public override void Init()
-        {
-            base.OnEntityDestroyed += CheckDestroy;
-        }
+        OnEntityDestroyed += CheckDestroy;
+    }
 
-        public override bool RunEntityDestroyedEvent(Entity entity, DeathType deathType)
-        {
-            if (entity != target)
-            {
-                return CheckDeathType(deathType);
-            }
+    public override bool RunEntityDestroyedEvent(Entity entity, DeathType deathType)
+    {
+        return entity != target && CheckDeathType(deathType);
+    }
 
-            return false;
-        }
-
-        public new IEnumerator CheckDestroy(Entity entity, DeathType deathType)
-        {
-            yield return Run(GetTargets(), GetAmount());
-        }
+    private new IEnumerator CheckDestroy(Entity entity, DeathType deathType)
+    {
+        yield return Run(GetTargets(), GetAmount());
     }
 }

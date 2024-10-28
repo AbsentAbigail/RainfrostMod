@@ -1,25 +1,27 @@
-﻿using RainfrostMod.StatusEffects;
+﻿using AbsentUtilities;
+using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
-namespace RainfrostMod.Cards.Companion
-{
-    internal class Slugpup() : AbstractUnit(
-        Name, "Slugpups",
-        2, 1, 3,
-        subscribe: card =>
-        {
-            card.startWithEffects = [
-                Rainfrost.SStack(WhileActiveAddMultiHitToAlliedSlugcats.Name, 1),
-            ];
+namespace RainfrostMod.Cards.Companion;
 
-            card.traits = [
-                Rainfrost.TStack(Slugcat.Name),
-            ];
-
-            card.greetMessages = ["...Wawa! (It seems they wish to join you.)"];
-        },
-        altSprite: true)
+internal class Slugpup() : AbstractCompanion(
+    Name, "Slugpups",
+    2, 1, 3,
+    subscribe: card =>
     {
-        public const string Name = "Slugpup";
-    }
+        card.startWithEffects =
+        [
+            AbsentUtils.SStack(WhileActiveAddMultiHitToAlliedSlugcats.Name)
+        ];
+
+        card.traits =
+        [
+            AbsentUtils.TStack(Slugcat.Name)
+        ];
+
+        card.greetMessages = ["...Wawa! (It seems they wish to join you.)"];
+    },
+    altSprite: true)
+{
+    public const string Name = "Slugpup";
 }
