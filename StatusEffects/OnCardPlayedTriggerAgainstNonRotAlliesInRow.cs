@@ -14,7 +14,7 @@ internal class OnCardPlayedTriggerAgainstNonRotAlliesInRow()
         return AbsentUtils.StatusCopy("On Card Played Trigger Against AllyBehind", Name)
             .SubscribeToAfterAllBuildEvent(data =>
             {
-                var status = data as StatusEffectApplyXOnCardPlayed;
+                var status = (StatusEffectApplyXOnCardPlayed)data;
                 status.textKey = null;
                 status.applyToFlags = StatusEffectApplyX.ApplyToFlags.AlliesInRow;
                 status.applyConstraints =

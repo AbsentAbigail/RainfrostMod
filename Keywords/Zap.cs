@@ -5,9 +5,10 @@ using static AbsentUtilities.StatusIconHelper;
 
 namespace RainfrostMod.Keywords;
 
-internal class Zap
+internal static class Zap
 {
     public static string Name = $"{AbsentUtils.GetModInfo(Assembly.GetExecutingAssembly()).Mod.GUID}.zap";
+    public static string Tag = AbstractKeyword.GetTag("zap");
     private static readonly Color Color = AbstractKeyword.Color(253, 195, 97);
 
     public static KeywordData Data()

@@ -1,4 +1,5 @@
 ﻿using AbsentUtilities;
+using Deadpan.Enums.Engine.Components.Modding;
 
 namespace RainfrostMod.Cards.Items;
 
@@ -12,4 +13,10 @@ internal class Rock() : AbstractItem(
     })
 {
     public const string Name = "Rock";
+
+    public override CardDataBuilder Builder()
+    {
+        return base.Builder()
+            .WithFlavour("Bonk");
+    }
 }

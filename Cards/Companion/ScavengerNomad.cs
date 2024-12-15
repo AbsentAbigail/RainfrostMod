@@ -11,6 +11,10 @@ internal class ScavengerNomad() : AbstractCompanion(
         [
             AbsentUtils.TStack("Draw", 2)
         ];
+        card.greetMessages =
+        [
+            "Do you have any Pearls?"
+        ];
     })
 {
     public const string Name = "ScavengerNomad";

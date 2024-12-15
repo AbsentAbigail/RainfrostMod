@@ -6,15 +6,12 @@ using static StatusEffectApplyX;
 
 namespace RainfrostMod.StatusEffects;
 
-internal class Zap() : AbstractApplyXStatus<StatusEffectApplyXPreTurnIgnoreSilence>(
+internal class Zap() : AbstractStatus<StatusEffectZap>(
     Name,
     canStack: true,
-    applyToFlags: ApplyToFlags.Self,
     subscribe: data =>
     {
         data.applyFormatKey = AbsentUtils.GetStatus("Shroom").applyFormatKey;
-        data.dealDamage = true;
-        data.countsAsHit = true;
         data.removeOnDiscard = true;
         data.targetConstraints =
         [

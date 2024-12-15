@@ -12,6 +12,10 @@ internal class ScavengerMerchant() : AbstractCompanion(
         [
             AbsentUtils.SStack(OnPearlCardPlayedDraw.Name, 2)
         ];
+        card.greetMessages =
+        [
+            "Do you have any Pearls?"
+        ];
     })
 {
     public const string Name = "ScavengerMerchant";

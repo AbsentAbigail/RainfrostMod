@@ -1,4 +1,5 @@
 ﻿using AbsentUtilities;
+using Deadpan.Enums.Engine.Components.Modding;
 using RainfrostMod.StatusEffects;
 
 namespace RainfrostMod.Cards.Items;
@@ -16,4 +17,10 @@ internal class JokeRifle() : AbstractItem(
     })
 {
     public const string Name = "JokeRifle";
+
+    public override CardDataBuilder Builder()
+    {
+        return base.Builder()
+            .WithFlavour("RATATATATATATATATAT");
+    }
 }

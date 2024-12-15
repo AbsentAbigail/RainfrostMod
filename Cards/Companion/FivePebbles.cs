@@ -1,11 +1,12 @@
 ﻿using AbsentUtilities;
+using Deadpan.Enums.Engine.Components.Modding;
 using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
 namespace RainfrostMod.Cards.Companion;
 
 internal class FivePebbles() : AbstractCompanion(
-    "FivePebbles", "Five Pebbles",
+    Name, "Five Pebbles",
     attack: 0, counter: 5,
     subscribe: card =>
     {
@@ -25,4 +26,11 @@ internal class FivePebbles() : AbstractCompanion(
     altSprite: true
 )
 {
+    public const string Name = "FivePebbles";
+    
+    public override CardDataBuilder Builder()
+    {
+        return base.Builder()
+            .WithFlavour("Who knew the cure for cancer was durians?");
+    }
 }

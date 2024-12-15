@@ -1,4 +1,5 @@
 ﻿using AbsentUtilities;
+using Deadpan.Enums.Engine.Components.Modding;
 using RainfrostMod.StatusEffects;
 using RainfrostMod.Traits;
 
@@ -22,4 +23,10 @@ internal class Enot() : AbstractCompanion(
     })
 {
     public const string Name = "Enot";
+    
+    public override CardDataBuilder Builder()
+    {
+        return base.Builder()
+            .WithFlavour("Thanks, Andrew");
+    }
 }
