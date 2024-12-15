@@ -14,6 +14,12 @@ public static class Enemies
             new AdultCentipede().Builder(),
             new Centiwing().Builder(),
             new Aquapede().Builder(),
+
+            new RedLizard().Builder(),
+            new BlueLizard().Builder(),
+            new GreenLizard().Builder(),
+            new PinkLizard().Builder(),
+            new WhiteLizard().Builder(),
         ]);
     }
 }

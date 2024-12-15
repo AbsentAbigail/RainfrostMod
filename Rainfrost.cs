@@ -7,7 +7,6 @@ using Deadpan.Enums.Engine.Components.Modding;
 using HarmonyLib;
 using JetBrains.Annotations;
 using RainfrostMod.Assets;
-using RainfrostMod.StatusEffects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

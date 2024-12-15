@@ -95,6 +95,10 @@ public static class Status
             new OnCardPlayedCleanseEnemies().Builder(),
             new GainFrenzyWhenZapAppliedToEnemies().Builder(),
             new ApplyCountDownToSelfWhenZapAppliedToEnemies().Builder(),
+
+            new InstantEatEffects().Builder(),
+            new OnKillGainEffects().Builder(),
+            new OnCardPlayedTriggerAgainstAllAllies().Builder(),
         ]);
     }
 }
